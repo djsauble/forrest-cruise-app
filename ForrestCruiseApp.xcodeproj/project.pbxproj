@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */; };
-		FB7158931D625E3B00CDFFF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158921D625E3B00CDFFF1 /* ViewController.swift */; };
+		FB7158931D625E3B00CDFFF1 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158921D625E3B00CDFFF1 /* GoalViewController.swift */; };
 		FB7158961D625E3B00CDFFF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7158941D625E3B00CDFFF1 /* Main.storyboard */; };
 		FB7158981D625E3B00CDFFF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB7158971D625E3B00CDFFF1 /* Assets.xcassets */; };
 		FB71589B1D625E3B00CDFFF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7158991D625E3B00CDFFF1 /* LaunchScreen.storyboard */; };
 		FB7158A61D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158A51D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift */; };
+		FB7158B21D62638000CDFFF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7158B11D62638000CDFFF1 /* HealthKit.framework */; };
+		FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158B31D62648400CDFFF1 /* HealthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +30,7 @@
 /* Begin PBXFileReference section */
 		FB71588D1D625E3B00CDFFF1 /* ForrestCruiseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForrestCruiseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB7158921D625E3B00CDFFF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB7158921D625E3B00CDFFF1 /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		FB7158951D625E3B00CDFFF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB7158971D625E3B00CDFFF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB71589A1D625E3B00CDFFF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,9 @@
 		FB7158A11D625E3B00CDFFF1 /* ForrestCruiseAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForrestCruiseAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7158A51D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForrestCruiseAppTests.swift; sourceTree = "<group>"; };
 		FB7158A71D625E3B00CDFFF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB7158B01D62638000CDFFF1 /* ForrestCruiseApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ForrestCruiseApp.entitlements; sourceTree = "<group>"; };
+		FB7158B11D62638000CDFFF1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		FB7158B31D62648400CDFFF1 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB7158B21D62638000CDFFF1 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +65,7 @@
 		FB7158841D625E3B00CDFFF1 = {
 			isa = PBXGroup;
 			children = (
+				FB7158B11D62638000CDFFF1 /* HealthKit.framework */,
 				FB71588F1D625E3B00CDFFF1 /* ForrestCruiseApp */,
 				FB7158A41D625E3B00CDFFF1 /* ForrestCruiseAppTests */,
 				FB71588E1D625E3B00CDFFF1 /* Products */,
@@ -77,8 +84,10 @@
 		FB71588F1D625E3B00CDFFF1 /* ForrestCruiseApp */ = {
 			isa = PBXGroup;
 			children = (
+				FB7158B01D62638000CDFFF1 /* ForrestCruiseApp.entitlements */,
 				FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */,
-				FB7158921D625E3B00CDFFF1 /* ViewController.swift */,
+				FB7158B31D62648400CDFFF1 /* HealthManager.swift */,
+				FB7158921D625E3B00CDFFF1 /* GoalViewController.swift */,
 				FB7158941D625E3B00CDFFF1 /* Main.storyboard */,
 				FB7158971D625E3B00CDFFF1 /* Assets.xcassets */,
 				FB7158991D625E3B00CDFFF1 /* LaunchScreen.storyboard */,
@@ -146,6 +155,12 @@
 				TargetAttributes = {
 					FB71588C1D625E3B00CDFFF1 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FSEU58LZ4A;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					FB7158A01D625E3B00CDFFF1 = {
 						CreatedOnToolsVersion = 7.3;
@@ -197,7 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB7158931D625E3B00CDFFF1 /* ViewController.swift in Sources */,
+				FB7158931D625E3B00CDFFF1 /* GoalViewController.swift in Sources */,
+				FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */,
 				FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ForrestCruiseApp/ForrestCruiseApp.entitlements;
 				INFOPLIST_FILE = ForrestCruiseApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielsauble.ForrestCruiseApp;
@@ -340,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ForrestCruiseApp/ForrestCruiseApp.entitlements;
 				INFOPLIST_FILE = ForrestCruiseApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielsauble.ForrestCruiseApp;
@@ -390,6 +408,7 @@
 				FB7158AC1D625E3B00CDFFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB7158AD1D625E3B00CDFFF1 /* Build configuration list for PBXNativeTarget "ForrestCruiseAppTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +417,7 @@
 				FB7158AF1D625E3B00CDFFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
