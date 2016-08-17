@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */; };
-		FB7158931D625E3B00CDFFF1 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158921D625E3B00CDFFF1 /* GoalViewController.swift */; };
 		FB7158961D625E3B00CDFFF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7158941D625E3B00CDFFF1 /* Main.storyboard */; };
 		FB7158981D625E3B00CDFFF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB7158971D625E3B00CDFFF1 /* Assets.xcassets */; };
 		FB71589B1D625E3B00CDFFF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7158991D625E3B00CDFFF1 /* LaunchScreen.storyboard */; };
 		FB7158A61D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158A51D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift */; };
 		FB7158B21D62638000CDFFF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7158B11D62638000CDFFF1 /* HealthKit.framework */; };
 		FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158B31D62648400CDFFF1 /* HealthManager.swift */; };
+		FBA1C0741D63E8C300DF2F0F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */; };
+		FBA1C0761D64C75000DF2F0F /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */; };
+		FBA68D461D63D3B300F46B76 /* TrendControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA68D451D63D3B300F46B76 /* TrendControl.swift */; };
+		FBA68D481D63E11200F46B76 /* WeeklyGoalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +33,6 @@
 /* Begin PBXFileReference section */
 		FB71588D1D625E3B00CDFFF1 /* ForrestCruiseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForrestCruiseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB7158921D625E3B00CDFFF1 /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		FB7158951D625E3B00CDFFF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB7158971D625E3B00CDFFF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB71589A1D625E3B00CDFFF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +43,10 @@
 		FB7158B01D62638000CDFFF1 /* ForrestCruiseApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ForrestCruiseApp.entitlements; sourceTree = "<group>"; };
 		FB7158B11D62638000CDFFF1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		FB7158B31D62648400CDFFF1 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
+		FBA68D451D63D3B300F46B76 /* TrendControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendControl.swift; sourceTree = "<group>"; };
+		FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyGoalControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +90,13 @@
 		FB71588F1D625E3B00CDFFF1 /* ForrestCruiseApp */ = {
 			isa = PBXGroup;
 			children = (
+				FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */,
+				FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */,
 				FB7158B01D62638000CDFFF1 /* ForrestCruiseApp.entitlements */,
 				FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */,
 				FB7158B31D62648400CDFFF1 /* HealthManager.swift */,
-				FB7158921D625E3B00CDFFF1 /* GoalViewController.swift */,
+				FBA68D451D63D3B300F46B76 /* TrendControl.swift */,
+				FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */,
 				FB7158941D625E3B00CDFFF1 /* Main.storyboard */,
 				FB7158971D625E3B00CDFFF1 /* Assets.xcassets */,
 				FB7158991D625E3B00CDFFF1 /* LaunchScreen.storyboard */,
@@ -212,9 +221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB7158931D625E3B00CDFFF1 /* GoalViewController.swift in Sources */,
+				FBA68D481D63E11200F46B76 /* WeeklyGoalControl.swift in Sources */,
+				FBA1C0741D63E8C300DF2F0F /* TodayViewController.swift in Sources */,
 				FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */,
+				FBA1C0761D64C75000DF2F0F /* GoalViewController.swift in Sources */,
 				FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */,
+				FBA68D461D63D3B300F46B76 /* TrendControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

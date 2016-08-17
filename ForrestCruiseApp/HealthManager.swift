@@ -13,7 +13,7 @@ class HealthManager {
     static var singleton: HealthManager? = HealthManager()
     
     var healthStore: HKHealthStore
-    var callback: ((lastWeek: Double?, thisWeek: Double?) -> Void)?
+    var callback: ((weeks: [Double]?) -> Void)?
     
     init?() {
         // App requires HealthKit
@@ -67,7 +67,7 @@ class HealthManager {
             // Take whatever steps are necessary to update your app's data and UI
             // This may involve executing other queries
             if let cb = self.callback {
-                self.getWeeklyDistance(cb)
+                self.getWeeklyDistance(26, callback: cb)
             }
         }
         
@@ -76,7 +76,7 @@ class HealthManager {
     }
     
     // Get the distance traversed in the given week
-    func getWeeklyDistance(callback: (lastWeek: Double?, thisWeek: Double?) -> Void) {
+    func getWeeklyDistance(weeks: Int = 2, callback: (weeks: [Double]?) -> Void) {
         let calendar = NSCalendar.currentCalendar()
         
         // Now
@@ -90,7 +90,7 @@ class HealthManager {
         let day0 = calendar.dateByAddingUnit(.Day, value: -(calendar.component(.Weekday, fromDate: today!) - 1), toDate: today!, options: [])
         
         // Start of the time period (inclusive)
-        let start = calendar.dateByAddingUnit(.Day, value: -7, toDate: day0!, options: [])
+        let start = calendar.dateByAddingUnit(.Day, value: -((weeks - 1) * 7), toDate: day0!, options: [])
         
         // End of the time period (exclusive)
         let end = now
@@ -109,21 +109,53 @@ class HealthManager {
                 fatalError("\(error?.localizedDescription)")
             }
             
-            var lastWeek = 0.0
-            var thisWeek = 0.0
-            for sample in samples {
-                if day0!.compare(sample.startDate) == .OrderedDescending {
-                    lastWeek += sample.quantity.doubleValueForUnit(HKUnit.mileUnit())
-                }
-                else {
-                    thisWeek += sample.quantity.doubleValueForUnit(HKUnit.mileUnit())
-                }
-            }
+            let weeks = self.aggregateIntoWeeks(samples)
             
-            callback(lastWeek: lastWeek, thisWeek: thisWeek)
+            // Call the callback on the main thread
+            dispatch_async(dispatch_get_main_queue()) {
+                callback(weeks: weeks)
+            }
         }
         
         // Run the query
         self.healthStore.executeQuery(query)
+    }
+    
+    // Aggregate sample data by weeks
+    func aggregateIntoWeeks(samples: [HKQuantitySample]) -> [Double] {
+        
+        // Get the first day of this week
+        let calendar = NSCalendar.currentCalendar()
+        let now = NSDate()
+        let components = calendar.components([.Year, .Month, .Day], fromDate: now)
+        let today = calendar.dateFromComponents(components)
+        let day0 = calendar.dateByAddingUnit(.Day, value: -(calendar.component(.Weekday, fromDate: today!) - 1), toDate: today!, options: [])
+        
+        // Loop variables
+        var current = day0
+        var sum = 0.0
+        
+        // Reverse the sample array so we process newest values first
+        let input = samples.reverse()
+        var output = [Double]()
+        
+        for sample in input {
+            
+            // If the next sample is older than the current week, append the current sum to the output array
+            if current!.compare(sample.startDate) == .OrderedDescending {
+                output.append(sum)
+                sum = 0
+                current = calendar.dateByAddingUnit(.Day, value: -7, toDate: current!, options: [])
+                continue
+            }
+            
+            // Add to the sum
+            sum += sample.quantity.doubleValueForUnit(HKUnit.mileUnit())
+        }
+        
+        // Add the final sample to the output array
+        output.append(sum)
+        
+        return output
     }
 }
