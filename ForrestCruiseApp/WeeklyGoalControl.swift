@@ -36,7 +36,6 @@ class WeeklyGoalControl: UIView {
     var thisDayLabel = UILabel()
     var thisDayBar = UIView()
     
-    var remainingLabel = UILabel()
     var remainingBar = UIView()
     
     // MARK: Initialization
@@ -52,7 +51,6 @@ class WeeklyGoalControl: UIView {
         self.addSubview(thisDayLabel)
         self.addSubview(thisDayBar)
         
-        self.addSubview(remainingLabel)
         self.addSubview(remainingBar)
     }
     
@@ -65,6 +63,7 @@ class WeeklyGoalControl: UIView {
         // Constants
         let barWidth = CGFloat(100)
         let textSpacing = CGFloat(10)
+        let textHeight = CGFloat(20)
         
         // Calculations
         let remaining = self.weeklyGoal - self.thisWeek
@@ -72,7 +71,9 @@ class WeeklyGoalControl: UIView {
         let now = NSDate()
         let daysLeft = 7 - calendar.component(.Weekday, fromDate: now)
         let thisDay = (remaining / Double(daysLeft)) - self.today
+        let nextDays = remaining - thisDay
         
+        // Bars
         thisWeekBar.backgroundColor = UIColor.redColor()
         let thisWeekHeight = frame.size.height * CGFloat(self.thisWeek / self.weeklyGoal)
         thisWeekBar.frame = CGRect(x: CGFloat(0), y: frame.size.height - thisWeekHeight, width: barWidth, height: thisWeekHeight)
@@ -82,16 +83,17 @@ class WeeklyGoalControl: UIView {
         thisDayBar.frame = CGRect(x: CGFloat(0), y: frame.size.height - thisWeekHeight - thisDayHeight, width: barWidth, height: thisDayHeight)
         
         remainingBar.backgroundColor = UIColor.lightGrayColor()
-        let remainingHeight = (frame.size.height * CGFloat(remaining / self.weeklyGoal)) - thisDayHeight
+        let remainingHeight = frame.size.height * CGFloat(nextDays / self.weeklyGoal)
         remainingBar.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: barWidth, height: remainingHeight)
         
+        // Labels
         weeklyGoalLabel.text = "\(round(self.weeklyGoal * 10) / 10) miles this week"
-        weeklyGoalLabel.frame = CGRect(x: barWidth + textSpacing, y: 0, width: frame.size.width - barWidth - textSpacing, height: 40)
-        
+        weeklyGoalLabel.frame = CGRect(x: barWidth + textSpacing, y: 0, width: frame.size.width - barWidth - textSpacing, height: textHeight)
+
         thisDayLabel.text = "\(round(thisDay * 10) / 10) miles left today"
-        thisDayLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - thisWeekHeight - thisDayHeight, width: frame.size.width - barWidth - textSpacing, height: 40)
-        
+        thisDayLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - thisWeekHeight - thisDayHeight, width: frame.size.width - barWidth - textSpacing, height: textHeight)
+
         thisWeekLabel.text = "\(round(self.thisWeek * 10) / 10) miles so far"
-        thisWeekLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - thisWeekHeight, width: frame.size.width - barWidth - textSpacing, height: 40)
+        thisWeekLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - thisWeekHeight, width: frame.size.width - barWidth - textSpacing, height: textHeight)
     }
 }

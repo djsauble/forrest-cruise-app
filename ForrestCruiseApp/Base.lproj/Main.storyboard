@@ -19,47 +19,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zV-0O-YVT" customClass="TrendControl" customModule="ForrestCruiseApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="449" width="560" height="94"/>
+                                <rect key="frame" x="20" y="394" width="560" height="94"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Weekly trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOq-jD-owm">
-                                <rect key="frame" x="20" y="420" width="101" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwv-Se-fNV">
-                                <rect key="frame" x="20" y="25" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-YF-B0a" customClass="WeeklyGoalControl" customModule="ForrestCruiseApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="54" width="560" height="358"/>
+                                <rect key="frame" x="20" y="28" width="560" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LX-sp-hDu">
+                                <rect key="frame" x="20" y="496" width="64" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kY-JZ-8WN">
+                                <rect key="frame" x="526" y="496" width="54" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-hy-SR3">
+                                <rect key="frame" x="267" y="496" width="67" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6zV-0O-YVT" secondAttribute="bottom" constant="8" id="0fp-ms-CaJ"/>
-                            <constraint firstItem="6zV-0O-YVT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="D7T-5e-zWk"/>
-                            <constraint firstItem="kP9-YF-B0a" firstAttribute="top" secondItem="Zwv-Se-fNV" secondAttribute="bottom" constant="8" id="Hf6-rm-JE1"/>
-                            <constraint firstItem="YOq-jD-owm" firstAttribute="top" secondItem="kP9-YF-B0a" secondAttribute="bottom" constant="8" id="L5r-Lz-36C"/>
-                            <constraint firstItem="6zV-0O-YVT" firstAttribute="top" secondItem="YOq-jD-owm" secondAttribute="bottom" constant="8" id="RzY-Le-ujo"/>
-                            <constraint firstItem="Zwv-Se-fNV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Sxm-bH-4Rc"/>
-                            <constraint firstItem="kP9-YF-B0a" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ZpA-ak-YeT"/>
-                            <constraint firstItem="Zwv-Se-fNV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="epj-hh-Ko1"/>
-                            <constraint firstItem="YOq-jD-owm" firstAttribute="top" secondItem="kP9-YF-B0a" secondAttribute="bottom" constant="8" id="k9a-z2-dRt"/>
-                            <constraint firstItem="kP9-YF-B0a" firstAttribute="top" secondItem="Zwv-Se-fNV" secondAttribute="bottom" constant="8" id="m8d-5o-Wsi"/>
-                            <constraint firstItem="YOq-jD-owm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mMJ-th-O34"/>
-                            <constraint firstItem="6zV-0O-YVT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="nYD-Pa-OLv"/>
-                            <constraint firstItem="6zV-0O-YVT" firstAttribute="top" secondItem="YOq-jD-owm" secondAttribute="bottom" constant="8" id="thg-Kf-Hhc"/>
-                            <constraint firstItem="kP9-YF-B0a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zxd-YX-Mfi"/>
+                            <constraint firstItem="0kY-JZ-8WN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3O3-3m-Ycp"/>
+                            <constraint firstItem="6zV-0O-YVT" firstAttribute="top" secondItem="kP9-YF-B0a" secondAttribute="bottom" constant="8" id="4Ja-N1-oiu"/>
+                            <constraint firstItem="6zV-0O-YVT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="6ZK-0Z-IMF"/>
+                            <constraint firstItem="kP9-YF-B0a" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9LP-Wu-7xY"/>
+                            <constraint firstItem="4LX-sp-hDu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Hwx-Bj-0rm"/>
+                            <constraint firstItem="6zV-0O-YVT" firstAttribute="top" secondItem="kP9-YF-B0a" secondAttribute="bottom" constant="8" id="IFl-vU-eRW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0kY-JZ-8WN" secondAttribute="bottom" constant="18" id="LLJ-y0-SDm"/>
+                            <constraint firstItem="6zV-0O-YVT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Lre-cB-Bqs"/>
+                            <constraint firstItem="kP9-YF-B0a" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="NiH-hT-APg"/>
+                            <constraint firstItem="0kY-JZ-8WN" firstAttribute="top" secondItem="6zV-0O-YVT" secondAttribute="bottom" constant="8" id="iVJ-Uc-XOh"/>
+                            <constraint firstItem="kP9-YF-B0a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="sPd-IA-oHS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Geg-hy-SR3" secondAttribute="bottom" constant="18" id="vlN-To-mzs"/>
+                            <constraint firstItem="Geg-hy-SR3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w3q-jZ-Rwv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4LX-sp-hDu" secondAttribute="bottom" constant="18" id="zve-Pv-oPe"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" id="S2X-2J-Bq2"/>
                     <connections>
+                        <outlet property="runLabel" destination="0kY-JZ-8WN" id="mPX-M8-ue8"/>
+                        <outlet property="stopLabel" destination="4LX-sp-hDu" id="ZYc-QE-9hd"/>
                         <outlet property="trendView" destination="6zV-0O-YVT" id="r2H-wY-T2r"/>
+                        <outlet property="walkLabel" destination="Geg-hy-SR3" id="8MN-Lv-uYP"/>
                         <outlet property="weeklyGoalView" destination="kP9-YF-B0a" id="Ka4-7v-2ht"/>
                     </connections>
                 </viewController>
