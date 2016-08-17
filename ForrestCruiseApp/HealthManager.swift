@@ -13,7 +13,7 @@ class HealthManager {
     static var singleton: HealthManager? = HealthManager()
     
     var healthStore: HKHealthStore
-    var callback: ((weeks: [Double]?) -> Void)?
+    var callback: ((weeks: [Double]?, day: Double) -> Void)?
     
     init?() {
         // App requires HealthKit
@@ -76,7 +76,7 @@ class HealthManager {
     }
     
     // Get the distance traversed in the given week
-    func getWeeklyDistance(weeks: Int = 2, callback: (weeks: [Double]?) -> Void) {
+    func getWeeklyDistance(weeks: Int = 2, callback: (weeks: [Double]?, day: Double) -> Void) {
         let calendar = NSCalendar.currentCalendar()
         
         // Now
@@ -109,11 +109,20 @@ class HealthManager {
                 fatalError("\(error?.localizedDescription)")
             }
             
+            // Aggregate weekly data
             let weeks = self.aggregateIntoWeeks(samples)
+            
+            // Aggregate today's data
+            var day = 0.0
+            var i = samples.count - 1
+            while i > 0 && samples[i].startDate.compare(today!) == .OrderedDescending {
+                day += samples[i].quantity.doubleValueForUnit(HKUnit.mileUnit())
+                i -= 1
+            }
             
             // Call the callback on the main thread
             dispatch_async(dispatch_get_main_queue()) {
-                callback(weeks: weeks)
+                callback(weeks: weeks, day: day)
             }
         }
         

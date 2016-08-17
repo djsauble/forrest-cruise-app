@@ -22,7 +22,7 @@ class TodayViewController: UIViewController {
         }
     }
 
-    func displayValues(weeks: [Double]?) {
+    func displayValues(weeks: [Double]?, day: Double) {
         
         // Sanity checks
         guard let data = weeks else {
@@ -35,8 +35,9 @@ class TodayViewController: UIViewController {
         }
         
         // Display
-        weeklyGoalView.weeklyGoal = data[1]
+        weeklyGoalView.weeklyGoal = data[1] * 1.1
         weeklyGoalView.thisWeek = data[0]
+        weeklyGoalView.today = day
         trendView.trend = data.reverse()
     }
 }

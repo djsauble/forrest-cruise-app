@@ -22,6 +22,11 @@ class WeeklyGoalControl: UIView {
             setNeedsLayout()
         }
     }
+    var today: Double = 0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     
     var weeklyGoalLabel = UILabel()
     
@@ -66,7 +71,7 @@ class WeeklyGoalControl: UIView {
         let calendar = NSCalendar.currentCalendar()
         let now = NSDate()
         let daysLeft = 7 - calendar.component(.Weekday, fromDate: now)
-        let thisDay = remaining / Double(daysLeft)
+        let thisDay = (remaining / Double(daysLeft)) - self.today
         
         thisWeekBar.backgroundColor = UIColor.redColor()
         let thisWeekHeight = frame.size.height * CGFloat(self.thisWeek / self.weeklyGoal)

@@ -26,17 +26,45 @@ class GoalViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         [ "mpw": 80, "race": "100 mile ultra" ]
     ]
     
-    let goalMinPace = 4
-    let goalMaxPace = 15
+    let goalMinPace = 4.0
+    let goalMaxPace = 15.0
+    
+    var goal = Goal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.goalDistancePicker.delegate = self
         self.goalDistancePicker.dataSource = self
+        self.goalDistancePicker.selectRow(rowFromDistance(goal.milesPerWeek), inComponent: 0, animated: false)
         
         self.goalPacePicker.delegate = self
         self.goalPacePicker.dataSource = self
+        self.goalPacePicker.selectRow(rowFromPace(goal.pace), inComponent: 0, animated: false)
+    }
+    
+    func rowFromDistance(distance: Double) -> Int {
+        var current = 10.0
+        var i = 0
+        
+        while (current < distance && i < goalDistances.count - 1) {
+            current += 10
+            i += 1
+        }
+        
+        return i
+    }
+    
+    func rowFromPace(pace: Double) -> Int {
+        var current = self.goalMinPace
+        var i = 0
+        
+        while current < pace && current < self.goalMaxPace {
+            current += 0.5
+            i += 1
+        }
+        
+        return i
     }
     
     // MARK: UIPickerViewDelegate
@@ -50,7 +78,7 @@ class GoalViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             return self.goalDistances.count
         }
         else {
-            return (self.goalMaxPace - self.goalMinPace) * 2
+            return Int(self.goalMaxPace - self.goalMinPace) * 2
         }
     }
     
@@ -61,7 +89,18 @@ class GoalViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         else {
             let minute = row / 2
             let halfMinute = (row % 2 == true)
-            return "\(self.goalMinPace + minute):\(halfMinute ? "30" : "00")"
+            return "\(Int(self.goalMinPace + Double(minute))):\(halfMinute ? "30" : "00")"
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView === self.goalDistancePicker {
+            self.goal.milesPerWeek = goalDistances[row]["mpw"] as! Double
+        }
+        else {
+            let minute = row / 2
+            let halfMinute = (row % 2 == true)
+            self.goal.pace = self.goalMinPace + Double(minute) + (halfMinute ? 0.5 : 0.0)
         }
     }
 }
