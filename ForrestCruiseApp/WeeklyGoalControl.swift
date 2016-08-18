@@ -69,7 +69,7 @@ class WeeklyGoalControl: UIView {
         let remaining = self.weeklyGoal - self.thisWeek
         let calendar = NSCalendar.currentCalendar()
         let now = NSDate()
-        let daysLeft = 7 - calendar.component(.Weekday, fromDate: now)
+        let daysLeft = 8 - calendar.component(.Weekday, fromDate: now)
         let thisDay = (remaining / Double(daysLeft)) - self.today
         let nextDays = remaining - thisDay
         

@@ -54,8 +54,7 @@ class TodayViewController: UIViewController {
     }
     
     func displayActivity(data: CMMotionActivity) {
-        if data.confidence == .High {
-            print("\(data.stationary) \(data.walking) \(data.running)")
+        if data.confidence == .High || (data.confidence == .Medium && data.stationary) {
             self.stopLabel.textColor = data.stationary ? UIColor.blackColor() : UIColor.lightGrayColor()
             self.walkLabel.textColor = data.walking ? UIColor.blackColor() : UIColor.lightGrayColor()
             self.runLabel.textColor = data.running ? UIColor.blackColor() : UIColor.lightGrayColor()
