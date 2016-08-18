@@ -56,10 +56,6 @@ class RunViewController: UIViewController {
                     totalEnergyBurned: nil,
                     totalDistance: distance,
                     device: HKDevice.localDevice(),
-                    // TODO: Figure out how to attach GPS data to a workout
-                    //metadata: [
-                    //    MetadataKey.gps: route
-                    //]
                     metadata: nil
                   )
         
