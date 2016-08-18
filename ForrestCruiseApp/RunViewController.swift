@@ -16,7 +16,7 @@ class RunViewController: UIViewController {
     
     // MARK: Properties
     
-    var route: NSMutableArray = NSMutableArray()
+    var route: [CLLocation] = []
     var startDate: NSDate?
     var endDate: NSDate?
     var distance: HKQuantity?
@@ -31,7 +31,7 @@ class RunViewController: UIViewController {
         print("Run started")
         
         // Prep for a new route
-        route = NSMutableArray()
+        route = []
         startDate = NSDate()
         endDate = startDate
         LocationManager.singleton.callback = self.addPointsToRoute
@@ -75,10 +75,13 @@ class RunViewController: UIViewController {
             
             // If we want, we can add samples for discrete intervals within the workout here...
         }
+        
+        // Persist the raw GPS data
+        self.saveData()
     }
     
     func addPointsToRoute(locations: [CLLocation]) {
-        route.addObjectsFromArray(locations)
+        route.appendContentsOf(locations)
         
         // Fix the end of the interval to search
         let now = NSDate()
@@ -131,5 +134,21 @@ class RunViewController: UIViewController {
     // Show the current distance in the UI
     func displayDistance() {
         self.distanceLabel.text = "\(self.distance!.doubleValueForUnit(HKUnit.mileUnit())) miles"
+    }
+    
+    // Prepare data for submission
+    func saveData() {
+        let params = self.route.map({
+            (location: CLLocation) -> Dictionary<String, String> in
+            return [
+                "latitude": String(location.coordinate.latitude),
+                "longitude": String(location.coordinate.longitude),
+                "accuracy": String(location.horizontalAccuracy),
+                "timestamp": location.timestamp.descriptionWithLocale(nil),
+                "speed": String(location.speed)
+            ]
+        })
+        
+        FileManager.singleton.post(params)
     }
 }
