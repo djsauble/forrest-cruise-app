@@ -14,6 +14,9 @@ class RunsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Use the edit button item provided by the table view controller
+        navigationItem.leftBarButtonItem = editButtonItem()
     }
     
     // MARK: Table view data source
@@ -23,9 +26,7 @@ class RunsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = FileManager.singleton.pending.files?.count ?? 0
-        print(count)
-        return count
+        return FileManager.singleton.pending.files?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -39,5 +40,19 @@ class RunsViewController: UITableViewController {
         cell.fileName.text = file
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            FileManager.singleton.pending.files?.removeAtIndex(indexPath.row)
+            FileManager.singleton.pending.saveFileList()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
     }
 }
