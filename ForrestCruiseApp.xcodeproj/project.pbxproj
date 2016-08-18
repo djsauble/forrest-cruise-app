@@ -25,6 +25,8 @@
 		FBAF4EFC1D6671A2002CDF72 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFB1D6671A2002CDF72 /* FileManager.swift */; };
 		FBAF4EFE1D6671AF002CDF72 /* FileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFD1D6671AF002CDF72 /* FileList.swift */; };
 		FBAF4F001D6671BA002CDF72 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFF1D6671BA002CDF72 /* URL.swift */; };
+		FBAF4F021D667A01002CDF72 /* RunsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4F011D667A01002CDF72 /* RunsViewController.swift */; };
+		FBAF4F041D667C41002CDF72 /* RunsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4F031D667C41002CDF72 /* RunsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		FBAF4EFB1D6671A2002CDF72 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		FBAF4EFD1D6671AF002CDF72 /* FileList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileList.swift; sourceTree = "<group>"; };
 		FBAF4EFF1D6671BA002CDF72 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		FBAF4F011D667A01002CDF72 /* RunsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsViewController.swift; sourceTree = "<group>"; };
+		FBAF4F031D667C41002CDF72 /* RunsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */,
 				FB028BA91D6626D100917859 /* RunViewController.swift */,
 				FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */,
+				FBAF4F011D667A01002CDF72 /* RunsViewController.swift */,
+				FBAF4F031D667C41002CDF72 /* RunsTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -294,7 +300,9 @@
 				FBA1C0741D63E8C300DF2F0F /* TodayViewController.swift in Sources */,
 				FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */,
 				FBA1C0761D64C75000DF2F0F /* GoalViewController.swift in Sources */,
+				FBAF4F041D667C41002CDF72 /* RunsTableViewCell.swift in Sources */,
 				FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */,
+				FBAF4F021D667A01002CDF72 /* RunsViewController.swift in Sources */,
 				FBAF4EFE1D6671AF002CDF72 /* FileList.swift in Sources */,
 				FBA68D461D63D3B300F46B76 /* TrendControl.swift in Sources */,
 				FBA1C0781D64F69E00DF2F0F /* Goal.swift in Sources */,

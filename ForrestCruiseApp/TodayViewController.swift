@@ -53,8 +53,8 @@ class TodayViewController: UIViewController {
     
     func onActivityChange(data: CMMotionActivity) {
         // Start recording GPS data
-        //if data.confidence == .High && data.running && !self.runInProgress {
-        if data.stationary && !self.runInProgress {
+        if data.confidence == .High && data.running && !self.runInProgress {
+        //if data.stationary && !self.runInProgress {
             self.performSegueWithIdentifier("recordRun", sender: self)
             self.runInProgress = true
         }

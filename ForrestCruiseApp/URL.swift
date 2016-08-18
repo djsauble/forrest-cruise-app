@@ -13,9 +13,11 @@ class URL {
     static var singleton = URL()
     
     // Production
+    static var ws = "wss://api-generator2.herokuapp.com/api"
     static var base = "https://api-generator2.herokuapp.com/api/runs"
     
     // Local
+    //static var ws = "ws://127.0.0.1:5000/ws"
     //static var base = "http://127.0.0.1:5000/api/runs"
 
     // Credentials
