@@ -40,13 +40,18 @@ class HealthManager {
     
     // Request authorization
     func authorizeHealthKit(completion: ((success: Bool, error: NSError?) -> Void)!) {
+        // Set the types you want to write to HK Store
+        let healthKitTypesToShare = Set<HKSampleType>([
+            HKObjectType.workoutType()
+        ])
+        
         // Set the types you want to read from HK Store
         let healthKitTypesToRead = Set<HKObjectType>([
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
         ])
         
         // Request HealthKit authorization
-        self.healthStore.requestAuthorizationToShareTypes(nil, readTypes: healthKitTypesToRead, completion: completion)
+        self.healthStore.requestAuthorizationToShareTypes(healthKitTypesToShare, readTypes: healthKitTypesToRead, completion: completion)
     }
     
     // Subscribe for walk/run updates

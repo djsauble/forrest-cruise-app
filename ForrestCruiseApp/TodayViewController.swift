@@ -13,9 +13,10 @@ class TodayViewController: UIViewController {
     
     @IBOutlet weak var trendView: TrendControl!
     @IBOutlet weak var weeklyGoalView: WeeklyGoalControl!
-    @IBOutlet weak var stopLabel: UILabel!
-    @IBOutlet weak var walkLabel: UILabel!
-    @IBOutlet weak var runLabel: UILabel!
+    
+    // MARK: Properties
+    
+    var runInProgress: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,7 @@ class TodayViewController: UIViewController {
         
         // Check for activity events
         if let manager = ActivityManager.singleton {
-            manager.callback = self.displayActivity
-            self.stopLabel.textColor = UIColor.lightGrayColor()
-            self.walkLabel.textColor = UIColor.lightGrayColor()
-            self.runLabel.textColor = UIColor.lightGrayColor()
+            manager.callback = self.onActivityChange
         }
     }
 
@@ -53,11 +51,17 @@ class TodayViewController: UIViewController {
         trendView.trend = data.reverse()
     }
     
-    func displayActivity(data: CMMotionActivity) {
-        if data.confidence == .High || (data.confidence == .Medium && data.stationary) {
-            self.stopLabel.textColor = data.stationary ? UIColor.blackColor() : UIColor.lightGrayColor()
-            self.walkLabel.textColor = data.walking ? UIColor.blackColor() : UIColor.lightGrayColor()
-            self.runLabel.textColor = data.running ? UIColor.blackColor() : UIColor.lightGrayColor()
+    func onActivityChange(data: CMMotionActivity) {
+        // Start recording GPS data
+        //if data.confidence == .High && data.running && !self.runInProgress {
+        if data.stationary && !self.runInProgress {
+            self.performSegueWithIdentifier("recordRun", sender: self)
+            self.runInProgress = true
+        }
+        // Stop recording GPS data
+        else if data.stationary && self.runInProgress {
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.runInProgress = false
         }
     }
 }

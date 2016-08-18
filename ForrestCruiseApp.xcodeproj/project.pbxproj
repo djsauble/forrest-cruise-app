@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB028BAA1D6626D100917859 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB028BA91D6626D100917859 /* RunViewController.swift */; };
+		FB028BAC1D662FD900917859 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB028BAB1D662FD900917859 /* LocationManager.swift */; };
 		FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */; };
 		FB7158961D625E3B00CDFFF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7158941D625E3B00CDFFF1 /* Main.storyboard */; };
 		FB7158981D625E3B00CDFFF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB7158971D625E3B00CDFFF1 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB028BA91D6626D100917859 /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
+		FB028BAB1D662FD900917859 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FB71588D1D625E3B00CDFFF1 /* ForrestCruiseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForrestCruiseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB7158951D625E3B00CDFFF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +76,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB028BA51D66222D00917859 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */,
+				FB028BA91D6626D100917859 /* RunViewController.swift */,
+				FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FB028BA61D66223E00917859 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FB7158B31D62648400CDFFF1 /* HealthManager.swift */,
+				FBA1C0791D6517E600DF2F0F /* ActivityManager.swift */,
+				FB028BAB1D662FD900917859 /* LocationManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		FB028BA71D66224B00917859 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				FBA68D451D63D3B300F46B76 /* TrendControl.swift */,
+				FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		FB028BA81D66225900917859 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FBA1C0771D64F69E00DF2F0F /* Goal.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		FB7158841D625E3B00CDFFF1 = {
 			isa = PBXGroup;
 			children = (
@@ -94,15 +135,12 @@
 		FB71588F1D625E3B00CDFFF1 /* ForrestCruiseApp */ = {
 			isa = PBXGroup;
 			children = (
-				FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */,
-				FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */,
-				FBA1C0771D64F69E00DF2F0F /* Goal.swift */,
+				FB028BA51D66222D00917859 /* Controllers */,
+				FB028BA81D66225900917859 /* Models */,
 				FB7158B01D62638000CDFFF1 /* ForrestCruiseApp.entitlements */,
 				FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */,
-				FB7158B31D62648400CDFFF1 /* HealthManager.swift */,
-				FBA1C0791D6517E600DF2F0F /* ActivityManager.swift */,
-				FBA68D451D63D3B300F46B76 /* TrendControl.swift */,
-				FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */,
+				FB028BA61D66223E00917859 /* Managers */,
+				FB028BA71D66224B00917859 /* Controls */,
 				FB7158941D625E3B00CDFFF1 /* Main.storyboard */,
 				FB7158971D625E3B00CDFFF1 /* Assets.xcassets */,
 				FB7158991D625E3B00CDFFF1 /* LaunchScreen.storyboard */,
@@ -172,6 +210,9 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FSEU58LZ4A;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -228,6 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA1C07A1D6517E600DF2F0F /* ActivityManager.swift in Sources */,
+				FB028BAA1D6626D100917859 /* RunViewController.swift in Sources */,
+				FB028BAC1D662FD900917859 /* LocationManager.swift in Sources */,
 				FBA68D481D63E11200F46B76 /* WeeklyGoalControl.swift in Sources */,
 				FBA1C0741D63E8C300DF2F0F /* TodayViewController.swift in Sources */,
 				FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */,
