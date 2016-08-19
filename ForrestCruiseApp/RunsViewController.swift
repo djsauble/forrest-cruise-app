@@ -50,8 +50,7 @@ class RunsViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            FileManager.singleton.pending.files?.removeAtIndex(indexPath.row)
-            FileManager.singleton.pending.saveFileList()
+            FileManager.singleton.deleteFile((FileManager.singleton.pending.files?[indexPath.row])!)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }

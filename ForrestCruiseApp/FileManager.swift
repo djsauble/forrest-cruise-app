@@ -105,6 +105,25 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
         }
     }
     
+    // Delete a file on disk
+    func deleteFile(file: String) {
+        do {
+            // Delete the file
+            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let docs: NSString = paths[0] as NSString
+            let path = docs.stringByAppendingPathComponent(file)
+            try NSFileManager.defaultManager().removeItemAtPath(path)
+            
+            // Delete the entry from the file list
+            if let index = self.pending.files?.indexOf(file) {
+                self.pending.files?.removeAtIndex(index)
+                self.pending.saveFileList()
+            }
+        } catch _ {
+            print("Was unable to delete the old file")
+        }
+    }
+    
     // NSURLSessionDelegate
     
     func URLSession(session: NSURLSession, didBecomeInvalidWithError error: NSError?) {
@@ -128,16 +147,7 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
                 if str.length == 0 {
                     if self.pending.files != nil {
                         // Delete the file that has been uploaded successfully
-                        do {
-                            let file = self.pending.files!.removeFirst()
-                            self.pending.saveFileList()
-                            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                            let docs: NSString = paths[0] as NSString
-                            let path = docs.stringByAppendingPathComponent(file)
-                            try NSFileManager.defaultManager().removeItemAtPath(path)
-                        } catch _ {
-                            print("Was unable to delete the old file")
-                        }
+                        self.deleteFile(self.pending.files!.first!)
                         
                         // See if there are more files to upload
                         if self.pending.files!.count > 0 {
