@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA9404FA24783D2A9083B1AB /* Pods_ForrestCruiseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21EC2DE289ED0A92D7019DBE /* Pods_ForrestCruiseApp.framework */; };
+		F8574830E0A8A3EA6E8300C9 /* Pods_ForrestCruiseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4F24A4509A573B13773853 /* Pods_ForrestCruiseAppTests.framework */; };
 		FB028BAA1D6626D100917859 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB028BA91D6626D100917859 /* RunViewController.swift */; };
 		FB028BAC1D662FD900917859 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB028BAB1D662FD900917859 /* LocationManager.swift */; };
 		FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */; };
@@ -40,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21EC2DE289ED0A92D7019DBE /* Pods_ForrestCruiseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForrestCruiseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93019F2C79B0C475B6474C91 /* Pods-ForrestCruiseAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseAppTests/Pods-ForrestCruiseAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD4F24A4509A573B13773853 /* Pods_ForrestCruiseAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForrestCruiseAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C314D22AD1010DC940137420 /* Pods-ForrestCruiseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseApp/Pods-ForrestCruiseApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C3BABF4BCC6D5003E9268A82 /* Pods-ForrestCruiseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseApp/Pods-ForrestCruiseApp.release.xcconfig"; sourceTree = "<group>"; };
+		ED0E5D3B1BAA898D162D2A0A /* Pods-ForrestCruiseAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseAppTests/Pods-ForrestCruiseAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB028BA91D6626D100917859 /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		FB028BAB1D662FD900917859 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FB71588D1D625E3B00CDFFF1 /* ForrestCruiseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForrestCruiseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB7158B21D62638000CDFFF1 /* HealthKit.framework in Frameworks */,
+				DA9404FA24783D2A9083B1AB /* Pods_ForrestCruiseApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +89,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8574830E0A8A3EA6E8300C9 /* Pods_ForrestCruiseAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5BFC0D6670D33D11BC83C95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21EC2DE289ED0A92D7019DBE /* Pods_ForrestCruiseApp.framework */,
+				AD4F24A4509A573B13773853 /* Pods_ForrestCruiseAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0C31D94B0406330C0F1DF6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C314D22AD1010DC940137420 /* Pods-ForrestCruiseApp.debug.xcconfig */,
+				C3BABF4BCC6D5003E9268A82 /* Pods-ForrestCruiseApp.release.xcconfig */,
+				93019F2C79B0C475B6474C91 /* Pods-ForrestCruiseAppTests.debug.xcconfig */,
+				ED0E5D3B1BAA898D162D2A0A /* Pods-ForrestCruiseAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FB028BA51D66222D00917859 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +163,8 @@
 				FB71588F1D625E3B00CDFFF1 /* ForrestCruiseApp */,
 				FB7158A41D625E3B00CDFFF1 /* ForrestCruiseAppTests */,
 				FB71588E1D625E3B00CDFFF1 /* Products */,
+				D0C31D94B0406330C0F1DF6A /* Pods */,
+				A5BFC0D6670D33D11BC83C95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB7158AA1D625E3B00CDFFF1 /* Build configuration list for PBXNativeTarget "ForrestCruiseApp" */;
 			buildPhases = (
+				5B6D4D38B272A15CBD9B85E4 /* [CP] Check Pods Manifest.lock */,
 				FB7158891D625E3B00CDFFF1 /* Sources */,
 				FB71588A1D625E3B00CDFFF1 /* Frameworks */,
 				FB71588B1D625E3B00CDFFF1 /* Resources */,
+				1FE10E29F0B9D43D2EAE8BA0 /* [CP] Embed Pods Frameworks */,
+				E16A49383771BFF531B61707 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,9 +240,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB7158AD1D625E3B00CDFFF1 /* Build configuration list for PBXNativeTarget "ForrestCruiseAppTests" */;
 			buildPhases = (
+				32E6BB4E2AFBC3F22990FD4F /* [CP] Check Pods Manifest.lock */,
 				FB71589D1D625E3B00CDFFF1 /* Sources */,
 				FB71589E1D625E3B00CDFFF1 /* Frameworks */,
 				FB71589F1D625E3B00CDFFF1 /* Resources */,
+				3870CB19D8550786E821EF73 /* [CP] Embed Pods Frameworks */,
+				72A03A6A3B2F1CAA57674FDD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +323,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FE10E29F0B9D43D2EAE8BA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ForrestCruiseApp/Pods-ForrestCruiseApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32E6BB4E2AFBC3F22990FD4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3870CB19D8550786E821EF73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ForrestCruiseAppTests/Pods-ForrestCruiseAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B6D4D38B272A15CBD9B85E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		72A03A6A3B2F1CAA57674FDD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ForrestCruiseAppTests/Pods-ForrestCruiseAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E16A49383771BFF531B61707 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ForrestCruiseApp/Pods-ForrestCruiseApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB7158891D625E3B00CDFFF1 /* Sources */ = {
@@ -434,6 +565,7 @@
 		};
 		FB7158AB1D625E3B00CDFFF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C314D22AD1010DC940137420 /* Pods-ForrestCruiseApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ForrestCruiseApp/ForrestCruiseApp.entitlements;
@@ -446,6 +578,7 @@
 		};
 		FB7158AC1D625E3B00CDFFF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3BABF4BCC6D5003E9268A82 /* Pods-ForrestCruiseApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ForrestCruiseApp/ForrestCruiseApp.entitlements;
@@ -458,6 +591,7 @@
 		};
 		FB7158AE1D625E3B00CDFFF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93019F2C79B0C475B6474C91 /* Pods-ForrestCruiseAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ForrestCruiseAppTests/Info.plist;
@@ -470,6 +604,7 @@
 		};
 		FB7158AF1D625E3B00CDFFF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED0E5D3B1BAA898D162D2A0A /* Pods-ForrestCruiseAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ForrestCruiseAppTests/Info.plist;

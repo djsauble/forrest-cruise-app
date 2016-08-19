@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Today View Controller-->
+        <!--Weekly Goal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TodayViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                             <constraint firstItem="6zV-0O-YVT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wRs-f2-zPf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="G24-GM-FnH"/>
+                    <navigationItem key="navigationItem" title="Weekly Goal" id="G24-GM-FnH"/>
                     <connections>
                         <outlet property="trendView" destination="6zV-0O-YVT" id="r2H-wY-T2r"/>
                         <outlet property="weeklyGoalView" destination="kP9-YF-B0a" id="Ka4-7v-2ht"/>
@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="-144" y="1703"/>
         </scene>
-        <!--Run View Controller-->
+        <!--Run in Progress-->
         <scene sceneID="he8-fa-2lp">
             <objects>
                 <viewController id="bcr-Zh-nVo" customClass="RunViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                             <constraint firstItem="C9h-9R-jIo" firstAttribute="centerX" secondItem="bvr-SZ-dXA" secondAttribute="centerX" id="tfo-m4-fp0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Nfv-Zq-dHH"/>
+                    <navigationItem key="navigationItem" title="Run in Progress" id="Nfv-Zq-dHH"/>
                     <connections>
                         <outlet property="distanceLabel" destination="C9h-9R-jIo" id="gqq-x5-7Mp"/>
                     </connections>
@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="-144" y="3244"/>
         </scene>
-        <!--Goal-->
+        <!--Long-Term Goal-->
         <scene sceneID="JxJ-oG-X5h">
             <objects>
                 <viewController id="OfZ-al-WsY" customClass="GoalViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,43 +98,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUx-zy-69i">
-                                <rect key="frame" x="27" y="28" width="35" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rg-fe-we3">
-                                <rect key="frame" x="27" y="57" width="553" height="216"/>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target pace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-Rc-Ege">
-                                <rect key="frame" x="27" y="298" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-HX-P9W">
-                                <rect key="frame" x="27" y="327" width="553" height="216"/>
-                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="IKU-Zn-dxD">
+                                <rect key="frame" x="20" y="74" width="560" height="466"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What race are you training for?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUx-zy-69i">
+                                        <rect key="frame" x="163" y="0.0" width="236" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rg-fe-we3">
+                                        <rect key="frame" x="120" y="26" width="320" height="205"/>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What is your target pace?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-Rc-Ege">
+                                        <rect key="frame" x="182" y="237" width="196" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-HX-P9W">
+                                        <rect key="frame" x="120" y="262" width="320" height="204"/>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1rg-fe-we3" firstAttribute="top" secondItem="DUx-zy-69i" secondAttribute="bottom" constant="8" id="7tx-hN-K46"/>
-                            <constraint firstItem="PHm-Rc-Ege" firstAttribute="top" secondItem="1rg-fe-we3" secondAttribute="bottom" constant="25" id="GNR-gs-2nE"/>
-                            <constraint firstItem="PHm-Rc-Ege" firstAttribute="top" secondItem="1rg-fe-we3" secondAttribute="bottom" constant="25" id="OIw-PF-UQl"/>
-                            <constraint firstItem="1rg-fe-we3" firstAttribute="leading" secondItem="bCf-2z-zZ1" secondAttribute="leadingMargin" constant="7" id="TFV-jU-rg8"/>
-                            <constraint firstItem="DUx-zy-69i" firstAttribute="leading" secondItem="bCf-2z-zZ1" secondAttribute="leadingMargin" constant="7" id="Tng-3G-hev"/>
-                            <constraint firstItem="5lr-HX-P9W" firstAttribute="top" secondItem="PHm-Rc-Ege" secondAttribute="bottom" constant="8" id="VIB-E9-6BW"/>
-                            <constraint firstItem="1rg-fe-we3" firstAttribute="trailing" secondItem="bCf-2z-zZ1" secondAttribute="trailingMargin" id="Vab-97-LNa"/>
-                            <constraint firstItem="5lr-HX-P9W" firstAttribute="leading" secondItem="bCf-2z-zZ1" secondAttribute="leadingMargin" constant="7" id="Vsh-Sk-OD3"/>
-                            <constraint firstItem="kjz-bv-CCD" firstAttribute="top" secondItem="5lr-HX-P9W" secondAttribute="bottom" constant="8" id="dQZ-38-qmv"/>
-                            <constraint firstItem="PHm-Rc-Ege" firstAttribute="leading" secondItem="bCf-2z-zZ1" secondAttribute="leadingMargin" constant="7" id="fvK-s0-Mnn"/>
-                            <constraint firstItem="5lr-HX-P9W" firstAttribute="top" secondItem="PHm-Rc-Ege" secondAttribute="bottom" constant="8" id="shy-Bd-D4a"/>
-                            <constraint firstItem="DUx-zy-69i" firstAttribute="top" secondItem="RpW-dJ-TLa" secondAttribute="bottom" constant="8" id="tqO-ZA-aox"/>
-                            <constraint firstItem="5lr-HX-P9W" firstAttribute="trailing" secondItem="bCf-2z-zZ1" secondAttribute="trailingMargin" id="zNI-It-ips"/>
+                            <constraint firstItem="IKU-Zn-dxD" firstAttribute="top" secondItem="RpW-dJ-TLa" secondAttribute="bottom" constant="10" id="BvC-bf-598"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="IKU-Zn-dxD" secondAttribute="bottom" constant="60" id="HsJ-ni-rHi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IKU-Zn-dxD" secondAttribute="trailing" id="Ht6-sF-aio"/>
+                            <constraint firstItem="IKU-Zn-dxD" firstAttribute="leading" secondItem="bCf-2z-zZ1" secondAttribute="leadingMargin" id="kp4-xg-DD0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Goal" id="MJe-NA-Zhr"/>
+                    <navigationItem key="navigationItem" title="Long-Term Goal" id="X2r-Hc-GH1"/>
                     <connections>
                         <outlet property="goalDistancePicker" destination="1rg-fe-we3" id="1Ds-JH-3bX"/>
                         <outlet property="goalPacePicker" destination="5lr-HX-P9W" id="qJV-Ao-nhf"/>
@@ -142,9 +138,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXk-IF-Yj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="967"/>
+            <point key="canvasLocation" x="644" y="1703"/>
         </scene>
-        <!--View Controller-->
+        <!--Login-->
         <scene sceneID="TVA-cN-QGY">
             <objects>
                 <viewController id="8tj-b7-OOe" sceneMemberID="viewController">
@@ -157,11 +153,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TRT-Lr-bYq"/>
+                    <navigationItem key="navigationItem" title="Login" id="TRT-Lr-bYq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pak-gx-ozL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="3244"/>
+            <point key="canvasLocation" x="1422" y="2468"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="esc-ZX-Wof">
@@ -174,7 +170,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="wzW-Q3-gvP" kind="relationship" relationship="viewControllers" id="AOy-Hz-cYo"/>
-                        <segue destination="OfZ-al-WsY" kind="relationship" relationship="viewControllers" id="OcD-iA-Ggs"/>
+                        <segue destination="KM5-Im-0jh" kind="relationship" relationship="viewControllers" id="OcD-iA-Ggs"/>
                         <segue destination="Ybh-X5-IzH" kind="relationship" relationship="viewControllers" id="EQk-jh-Xo1"/>
                     </connections>
                 </tabBarController>
@@ -219,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="-144" y="2468"/>
         </scene>
-        <!--Runs View Controller-->
+        <!--Runs-->
         <scene sceneID="3AA-eE-dMF">
             <objects>
                 <tableViewController id="UvB-T8-LtY" customClass="RunsViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,38 +254,25 @@
                             <outlet property="delegate" destination="UvB-T8-LtY" id="w0e-TA-CTM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ji4-JR-c3I"/>
-                    <connections>
-                        <segue destination="C7P-AK-mlw" kind="presentation" id="Hl4-l4-htV"/>
-                    </connections>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Runs" id="Ji4-JR-c3I">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="UB0-nN-Abp">
+                            <connections>
+                                <segue destination="8tj-b7-OOe" kind="show" id="wyX-9b-nI0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-54-qWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1422" y="1703"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="WET-H3-LQK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C7P-AK-mlw" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yO5-ED-Fxk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8tj-b7-OOe" kind="relationship" relationship="rootViewController" id="F2a-zZ-vWU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pOb-xW-Gka" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1422" y="2468"/>
-        </scene>
         <!--Runs-->
         <scene sceneID="Y1y-Nm-tyd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ybh-X5-IzH" userLabel="Runs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Jd9-g6-OEy"/>
+                    <tabBarItem key="tabBarItem" title="Runs" id="Jd9-g6-OEy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oo3-ka-dQ1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -303,6 +286,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQx-mC-UW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1422" y="967"/>
+        </scene>
+        <!--Goal-->
+        <scene sceneID="zx9-LG-v8P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KM5-Im-0jh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Goal" id="MJe-NA-Zhr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kTh-Rb-XIE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OfZ-al-WsY" kind="relationship" relationship="rootViewController" id="J4M-9F-gWy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T0o-cF-2SG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="967"/>
         </scene>
     </scenes>
 </document>
