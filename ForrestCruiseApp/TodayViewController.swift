@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import HealthKit
 
 class TodayViewController: UIViewController {
     
@@ -23,7 +24,8 @@ class TodayViewController: UIViewController {
         
         // Refresh the values
         if let manager = HealthManager.singleton {
-            manager.callback = self.displayValues
+            manager.trendCallback = self.displayTrend
+            manager.todayCallback = self.displayDay
         }
         
         // Check for activity events
@@ -31,24 +33,28 @@ class TodayViewController: UIViewController {
             manager.callback = self.onActivityChange
         }
     }
+    
+    func displayTrend(weeks: [HKStatistics]?) {
+        if let weeks = weeks {
+            var data = weeks.map({
+                week in
+                return week.sumQuantity()?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0
+            })
+            
+            if data.count > 1 {
+                self.weeklyGoalView.weeklyGoal = data[data.count - 2] * 1.1
+            }
+            if data.count > 0 {
+                self.weeklyGoalView.thisWeek = data.last!
+            }
+            self.trendView.trend = data
+        }
+    }
 
-    func displayValues(weeks: [Double]?, day: Double) {
-        
-        // Sanity checks
-        guard let data = weeks else {
-            // No data
-            return
+    func displayDay(day: HKStatistics?) {
+        if let day = day {
+            self.weeklyGoalView.today = day.sumQuantity()?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0
         }
-        guard data.count >= 2 else {
-            // Not enough data
-            return
-        }
-        
-        // Display
-        weeklyGoalView.weeklyGoal = data[1] * 1.1
-        weeklyGoalView.thisWeek = data[0]
-        weeklyGoalView.today = day
-        trendView.trend = data.reverse()
     }
     
     func onActivityChange(data: CMMotionActivity) {

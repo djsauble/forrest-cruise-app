@@ -13,7 +13,8 @@ class HealthManager {
     static var singleton: HealthManager? = HealthManager()
     
     var healthStore: HKHealthStore
-    var callback: ((weeks: [Double]?, day: Double) -> Void)?
+    var trendCallback: ((weeks: [HKStatistics]?) -> Void)?
+    var todayCallback: ((day: HKStatistics?) -> Void)?
     
     init?() {
         // App requires HealthKit
@@ -33,8 +34,8 @@ class HealthManager {
                 fatalError("\(error?.localizedDescription)")
             }
             
-            // Subscribe to updates
-            self.subscribe()
+            // Subscribe to trend updates
+            self.subscribeTrend()
         })
     }
     
@@ -54,14 +55,24 @@ class HealthManager {
         self.healthStore.requestAuthorizationToShareTypes(healthKitTypesToShare, readTypes: healthKitTypesToRead, completion: completion)
     }
     
-    // Subscribe for walk/run updates
-    func subscribe() {
-        guard let sampleType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning) else {
-            fatalError("*** This method should never fail ***")
+    // Subscribe to day updates
+    func subscribeDay() {
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        // Set the start date to today at midnight
+        let anchorComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        
+        // Set the start date to midnight today
+        let startDate = calendar.dateFromComponents(anchorComponents)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: nil, options: .None)
+        
+        guard let quantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning) else {
+            fatalError("*** This method should never fail***")
         }
         
-        // Long-running query
-        let query = HKObserverQuery(sampleType: sampleType, predicate: nil) {
+        // Long-running query for daily data
+        let query = HKObserverQuery(sampleType: quantityType, predicate: predicate) {
             query, completionHandler, error in
             
             if let error = error {
@@ -71,8 +82,61 @@ class HealthManager {
             
             // Take whatever steps are necessary to update your app's data and UI
             // This may involve executing other queries
-            if let cb = self.callback {
-                self.getWeeklyDistance(26, callback: cb)
+            if let callback = self.todayCallback {
+                self.getTodayDistance(callback)
+            }
+        }
+ 
+        self.healthStore.executeQuery(query)
+    }
+    
+    // Subscribe to trend updates
+    func subscribeTrend() {
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        let interval = NSDateComponents()
+        interval.day = 7
+        
+        // Set the anchor date to Sunday at 12:00 a.m.
+        let anchorComponents = calendar.components([.Day, .Month, .Year, .Weekday], fromDate: NSDate())
+        
+        let offset = (7 + anchorComponents.weekday - 1) % 7
+        anchorComponents.day -= offset
+        anchorComponents.hour = 0
+        
+        guard let anchorDate = calendar.dateFromComponents(anchorComponents) else {
+            fatalError("*** Unable to create a valid date from the given components ***")
+        }
+        
+        guard let quantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning) else {
+            fatalError("*** This method should never fail ***")
+        }
+        
+        // Set the start date to 51 weeks before the anchor week
+        let startDate = calendar.dateByAddingUnit(.Day, value: -7 * 51, toDate: anchorDate, options: .MatchFirst)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: nil, options: .None)
+        
+        // Create a long-running query
+        let query = HKStatisticsCollectionQuery(quantityType: quantityType, quantitySamplePredicate: predicate, options: .CumulativeSum, anchorDate: anchorDate, intervalComponents: interval)
+        
+        // Set the results handlers
+        query.initialResultsHandler = {
+            query, collection, error in
+            
+            if let collection = collection, callback = self.trendCallback {
+                dispatch_async(dispatch_get_main_queue()) {
+                    callback(weeks: collection.statistics())
+                }
+            }
+        }
+        query.statisticsUpdateHandler = {
+            query, statistics, collection, error in
+            
+            if let collection = collection, callback = self.trendCallback {
+                dispatch_async(dispatch_get_main_queue()) {
+                    callback(weeks: collection.statistics())
+                }
             }
         }
         
@@ -81,7 +145,7 @@ class HealthManager {
     }
     
     // Get the distance traversed in the given week
-    func getWeeklyDistance(weeks: Int = 2, callback: (weeks: [Double]?, day: Double) -> Void) {
+    func getTodayDistance(callback: (day: HKStatistics?) -> Void) {
         let calendar = NSCalendar.currentCalendar()
         
         // Now
@@ -91,43 +155,19 @@ class HealthManager {
         let components = calendar.components([.Year, .Month, .Day], fromDate: now)
         let today = calendar.dateFromComponents(components)
         
-        // Start of the week
-        let day0 = calendar.dateByAddingUnit(.Day, value: -(calendar.component(.Weekday, fromDate: today!) - 1), toDate: today!, options: [])
-        
-        // Start of the time period (inclusive)
-        let start = calendar.dateByAddingUnit(.Day, value: -((weeks - 1) * 7), toDate: day0!, options: [])
-        
-        // End of the time period (exclusive)
-        let end = now
-        
         guard let sampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning) else {
             fatalError("*** This method should never fail ***")
         }
         
-        let predicate = HKQuery.predicateForSamplesWithStartDate(start, endDate: end, options: .None)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(today, endDate: nil, options: .None)
         
         // Set up the query
-        let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) {
+        let query = HKStatisticsQuery(quantityType: sampleType, quantitySamplePredicate: predicate, options: .CumulativeSum) {
             query, results, error in
-            
-            guard let samples = results as? [HKQuantitySample] else {
-                fatalError("\(error?.localizedDescription)")
-            }
-            
-            // Aggregate weekly data
-            let weeks = self.aggregateIntoWeeks(samples)
-            
-            // Aggregate today's data
-            var day = 0.0
-            var i = samples.count - 1
-            while i > 0 && samples[i].startDate.compare(today!) == .OrderedDescending {
-                day += samples[i].quantity.doubleValueForUnit(HKUnit.mileUnit())
-                i -= 1
-            }
             
             // Call the callback on the main thread
             dispatch_async(dispatch_get_main_queue()) {
-                callback(weeks: weeks, day: day)
+                callback(day: results)
             }
         }
         
