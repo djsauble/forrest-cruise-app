@@ -143,7 +143,7 @@
         <!--Login-->
         <scene sceneID="TVA-cN-QGY">
             <objects>
-                <viewController id="8tj-b7-OOe" sceneMemberID="viewController">
+                <viewController id="8tj-b7-OOe" customClass="LoginViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t6l-9G-BTa"/>
                         <viewControllerLayoutGuide type="bottom" id="xHu-zP-LCi"/>
@@ -151,9 +151,30 @@
                     <view key="view" contentMode="scaleToFill" id="Avx-ej-4tu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your access token" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAd-ci-IGV">
+                                <rect key="frame" x="20" y="82" width="184" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wll-dU-llQ">
+                                <rect key="frame" x="20" y="111" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="join" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-rB-Tlt">
+                                <rect key="frame" x="20" y="149" width="268" height="30"/>
+                                <state key="normal" title="Don't have one? Generate a new token."/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="TRT-Lr-bYq"/>
+                    <connections>
+                        <outlet property="getTokenButton" destination="9Ee-rB-Tlt" id="r9l-qU-2uE"/>
+                        <outlet property="tokenText" destination="Wll-dU-llQ" id="HBs-cb-ef7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pak-gx-ozL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

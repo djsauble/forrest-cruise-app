@@ -1,5 +1,5 @@
 //
-//  URL.swift
+//  URLManager.swift
 //  ForrestCruiseApp
 //
 //  Created by Daniel Sauble on 2/29/16.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class URL {
+class RemoteAPI {
     
-    static var singleton = URL()
+    // MARK: Properties
     
     // Production
     static var ws = "wss://api-generator2.herokuapp.com/api"
@@ -26,7 +26,7 @@ class URL {
     
     init() {
         // Read the user ID
-        if let u = NSKeyedUnarchiver.unarchiveObjectWithFile(URL.UserArchiveURL.path!) {
+        if let u = NSKeyedUnarchiver.unarchiveObjectWithFile(RemoteAPI.UserArchiveURL.path!) {
             self.user = u as? String
         }
         else {
@@ -34,7 +34,7 @@ class URL {
         }
         
         // Read the user token
-        if let t = NSKeyedUnarchiver.unarchiveObjectWithFile(URL.TokenArchiveURL.path!) {
+        if let t = NSKeyedUnarchiver.unarchiveObjectWithFile(RemoteAPI.TokenArchiveURL.path!) {
             self.token = t as? String
         }
         else {
@@ -51,7 +51,7 @@ class URL {
     func save() {
         // Save the user ID
         if let u = self.user {
-            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(u, toFile: URL.UserArchiveURL.path!)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(u, toFile: RemoteAPI.UserArchiveURL.path!)
             
             if !isSuccessfulSave {
                 print("Failed to save user ID")
@@ -60,7 +60,7 @@ class URL {
         
         // Save the user token
         if let t = self.token {
-            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(t, toFile: URL.TokenArchiveURL.path!)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(t, toFile: RemoteAPI.TokenArchiveURL.path!)
             
             if !isSuccessfulSave {
                 print("Failed to save user token")
@@ -73,7 +73,7 @@ class URL {
         if let u = self.user {
             if let t = self.token {
                 if !u.isEmpty && !t.isEmpty {
-                    return NSURL(string: "\(URL.base)?user=\(u)&token=\(t)");
+                    return NSURL(string: "\(RemoteAPI.base)?user=\(u)&token=\(t)");
                 }
             }
         }

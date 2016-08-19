@@ -18,6 +18,7 @@
 		FB7158A61D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158A51D625E3B00CDFFF1 /* ForrestCruiseAppTests.swift */; };
 		FB7158B21D62638000CDFFF1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7158B11D62638000CDFFF1 /* HealthKit.framework */; };
 		FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158B31D62648400CDFFF1 /* HealthManager.swift */; };
+		FB79F8071D67A7E40092E93A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB79F8061D67A7E40092E93A /* LoginViewController.swift */; };
 		FBA1C0741D63E8C300DF2F0F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */; };
 		FBA1C0761D64C75000DF2F0F /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */; };
 		FBA1C0781D64F69E00DF2F0F /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1C0771D64F69E00DF2F0F /* Goal.swift */; };
@@ -26,7 +27,7 @@
 		FBA68D481D63E11200F46B76 /* WeeklyGoalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */; };
 		FBAF4EFC1D6671A2002CDF72 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFB1D6671A2002CDF72 /* FileManager.swift */; };
 		FBAF4EFE1D6671AF002CDF72 /* FileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFD1D6671AF002CDF72 /* FileList.swift */; };
-		FBAF4F001D6671BA002CDF72 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFF1D6671BA002CDF72 /* URL.swift */; };
+		FBAF4F001D6671BA002CDF72 /* RemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4EFF1D6671BA002CDF72 /* RemoteAPI.swift */; };
 		FBAF4F021D667A01002CDF72 /* RunsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4F011D667A01002CDF72 /* RunsViewController.swift */; };
 		FBAF4F041D667C41002CDF72 /* RunsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF4F031D667C41002CDF72 /* RunsTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		FB7158B01D62638000CDFFF1 /* ForrestCruiseApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ForrestCruiseApp.entitlements; sourceTree = "<group>"; };
 		FB7158B11D62638000CDFFF1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		FB7158B31D62648400CDFFF1 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		FB79F8061D67A7E40092E93A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		FBA1C0771D64F69E00DF2F0F /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 		FBA68D471D63E11200F46B76 /* WeeklyGoalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyGoalControl.swift; sourceTree = "<group>"; };
 		FBAF4EFB1D6671A2002CDF72 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		FBAF4EFD1D6671AF002CDF72 /* FileList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileList.swift; sourceTree = "<group>"; };
-		FBAF4EFF1D6671BA002CDF72 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		FBAF4EFF1D6671BA002CDF72 /* RemoteAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPI.swift; sourceTree = "<group>"; };
 		FBAF4F011D667A01002CDF72 /* RunsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsViewController.swift; sourceTree = "<group>"; };
 		FBAF4F031D667C41002CDF72 /* RunsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				FB028BA91D6626D100917859 /* RunViewController.swift */,
 				FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */,
 				FBAF4F011D667A01002CDF72 /* RunsViewController.swift */,
+				FB79F8061D67A7E40092E93A /* LoginViewController.swift */,
 				FBAF4F031D667C41002CDF72 /* RunsTableViewCell.swift */,
 			);
 			name = Views;
@@ -208,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				FBAF4EFD1D6671AF002CDF72 /* FileList.swift */,
-				FBAF4EFF1D6671BA002CDF72 /* URL.swift */,
+				FBAF4EFF1D6671BA002CDF72 /* RemoteAPI.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -427,13 +430,14 @@
 				FBAF4EFC1D6671A2002CDF72 /* FileManager.swift in Sources */,
 				FB028BAC1D662FD900917859 /* LocationManager.swift in Sources */,
 				FBA68D481D63E11200F46B76 /* WeeklyGoalControl.swift in Sources */,
-				FBAF4F001D6671BA002CDF72 /* URL.swift in Sources */,
+				FBAF4F001D6671BA002CDF72 /* RemoteAPI.swift in Sources */,
 				FBA1C0741D63E8C300DF2F0F /* TodayViewController.swift in Sources */,
 				FB7158B41D62648400CDFFF1 /* HealthManager.swift in Sources */,
 				FBA1C0761D64C75000DF2F0F /* GoalViewController.swift in Sources */,
 				FBAF4F041D667C41002CDF72 /* RunsTableViewCell.swift in Sources */,
 				FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */,
 				FBAF4F021D667A01002CDF72 /* RunsViewController.swift in Sources */,
+				FB79F8071D67A7E40092E93A /* LoginViewController.swift in Sources */,
 				FBAF4EFE1D6671AF002CDF72 /* FileList.swift in Sources */,
 				FBA68D461D63D3B300F46B76 /* TrendControl.swift in Sources */,
 				FBA1C0781D64F69E00DF2F0F /* Goal.swift in Sources */,

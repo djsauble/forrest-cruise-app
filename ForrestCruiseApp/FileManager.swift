@@ -19,6 +19,7 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
     var responsesData: [Int:NSMutableData] = [:]
     var responseData: NSMutableData? = nil
     var pending = FileList()
+    var remote = RemoteAPI()
     
     override init() {
         self.session = nil
@@ -29,6 +30,17 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
         // Configure the URL session
         let config = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(id)
         self.session = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
+    }
+    
+    // Update the login credentials
+    func setCredentialsForUser(user: String, token: String) {
+        // Save the new credentials
+        remote.user = user
+        remote.token = token
+        remote.save()
+        
+        // Start uploads if nothing in progress
+        self.kick()
     }
     
     // Submit data to the web service
@@ -85,7 +97,7 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
     
     // Upload a file that is stored on disk
     func upload(file: String) {
-        if let url = URL.singleton.url() {
+        if let url = remote.url() {
             // Configure HTTP request
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "PUT"
