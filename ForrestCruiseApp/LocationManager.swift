@@ -10,8 +10,6 @@ import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
-    static var singleton = LocationManager()
-    
     var locationManager = CLLocationManager()
     var deferringUpdates: Bool = false
     var callback: ((locations: [CLLocation]) -> Void)?
@@ -55,7 +53,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     // Record the current location
     @objc func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Location update...")
+
         // Add the new points to the array
         if let cb = callback {
             cb(locations: locations)

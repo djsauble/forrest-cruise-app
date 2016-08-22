@@ -45,46 +45,11 @@
                     <connections>
                         <outlet property="trendView" destination="6zV-0O-YVT" id="r2H-wY-T2r"/>
                         <outlet property="weeklyGoalView" destination="kP9-YF-B0a" id="Ka4-7v-2ht"/>
-                        <segue destination="mfd-aa-u1c" kind="presentation" identifier="recordRun" id="11c-1Z-3fb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-144" y="1703"/>
-        </scene>
-        <!--Run in Progress-->
-        <scene sceneID="he8-fa-2lp">
-            <objects>
-                <viewController id="bcr-Zh-nVo" customClass="RunViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="llb-mQ-lIT"/>
-                        <viewControllerLayoutGuide type="bottom" id="yaM-FN-q8P"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bvr-SZ-dXA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9h-9R-jIo">
-                                <rect key="frame" x="199" y="273" width="203" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="C9h-9R-jIo" firstAttribute="centerY" secondItem="bvr-SZ-dXA" secondAttribute="centerY" id="Svh-uN-tlh"/>
-                            <constraint firstItem="C9h-9R-jIo" firstAttribute="centerX" secondItem="bvr-SZ-dXA" secondAttribute="centerX" id="tfo-m4-fp0"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Run in Progress" id="Nfv-Zq-dHH"/>
-                    <connections>
-                        <outlet property="distanceLabel" destination="C9h-9R-jIo" id="gqq-x5-7Mp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D3U-8d-MOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-144" y="3244"/>
         </scene>
         <!--Long-Term Goal-->
         <scene sceneID="JxJ-oG-X5h">
@@ -116,7 +81,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-HX-P9W">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-HX-P9W">
                                         <rect key="frame" x="120" y="262" width="320" height="204"/>
                                     </pickerView>
                                 </subviews>
@@ -217,24 +182,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJf-yi-z3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-144" y="967"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aoo-A3-i92">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mfd-aa-u1c" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BnM-ya-Gxs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bcr-Zh-nVo" kind="relationship" relationship="rootViewController" id="auR-6H-WWo"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wD0-pt-SnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-144" y="2468"/>
         </scene>
         <!--Runs-->
         <scene sceneID="3AA-eE-dMF">

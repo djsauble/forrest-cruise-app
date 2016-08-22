@@ -15,6 +15,7 @@ class HealthManager {
     var healthStore: HKHealthStore
     var trendCallback: ((weeks: [HKStatistics]?) -> Void)?
     var todayCallback: ((day: HKStatistics?) -> Void)?
+    var workoutCallback: ((weeks: [Double]?) -> Void)?
     
     init?() {
         // App requires HealthKit
@@ -62,8 +63,6 @@ class HealthManager {
         
         // Set the start date to today at midnight
         let anchorComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
-        
-        // Set the start date to midnight today
         let startDate = calendar.dateFromComponents(anchorComponents)
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: nil, options: .None)
         
@@ -87,6 +86,47 @@ class HealthManager {
             }
         }
  
+        self.healthStore.executeQuery(query)
+    }
+    
+    // Subscribe to workout updates
+    func subscribeWorkouts() {
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        // Set the anchor week to Sunday at 12:00 a.m.
+        let anchorComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        
+        let offset = (7 + anchorComponents.weekday - 1) % 7
+        anchorComponents.day -= offset
+        anchorComponents.hour = 0
+        
+        guard let anchorDate = calendar.dateFromComponents(anchorComponents) else {
+            fatalError("*** Unable to create a valid date from the given components ***")
+        }
+        
+        let quantityType = HKObjectType.workoutType()
+        
+        // Set the start date to 51 weeks before the anchor week
+        let startDate = calendar.dateByAddingUnit(.Day, value: -7 * 51, toDate: anchorDate, options: .MatchFirst)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: nil, options: .None)
+        
+        // Long-running query for daily data
+        let query = HKObserverQuery(sampleType: quantityType, predicate: predicate) {
+            query, completionHandler, error in
+            
+            if let error = error {
+                // Perform proper error handling here
+                fatalError("\(error.localizedDescription)")
+            }
+            
+            // Take whatever steps are necessary to update your app's data and UI
+            // This may involve executing other queries
+            if let callback = self.workoutCallback {
+                self.getWorkoutDistances(callback)
+            }
+        }
+        
         self.healthStore.executeQuery(query)
     }
     
@@ -175,8 +215,50 @@ class HealthManager {
         self.healthStore.executeQuery(query)
     }
     
+    // Get the workout distances over the past year
+    func getWorkoutDistances(callback: (weeks: [Double]?) -> Void) {
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        // Set the anchor week to Sunday at 12:00 a.m.
+        let anchorComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        
+        let offset = (7 + anchorComponents.weekday - 1) % 7
+        anchorComponents.day -= offset
+        anchorComponents.hour = 0
+        
+        guard let anchorDate = calendar.dateFromComponents(anchorComponents) else {
+            fatalError("*** Unable to create a valid date from the given components ***")
+        }
+        
+        let quantityType = HKObjectType.workoutType()
+        
+        // Set the start date to 51 weeks before the anchor week
+        let startDate = calendar.dateByAddingUnit(.Day, value: -7 * 51, toDate: anchorDate, options: .MatchFirst)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: nil, options: .None)
+        
+        // Set up the query
+        let query = HKSampleQuery(sampleType: quantityType, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) {
+            query, results, error in
+            
+            guard let samples = results as? [HKWorkout] else {
+                fatalError("An error occurred fetching the list of workouts")
+            }
+            
+            let weeks = self.aggregateIntoWeeks(samples)
+            
+            // Call the callback on the main thread
+            dispatch_async(dispatch_get_main_queue()) {
+                callback(weeks: weeks)
+            }
+        }
+        
+        // Run the query
+        self.healthStore.executeQuery(query)
+    }
+    
     // Aggregate sample data by weeks
-    func aggregateIntoWeeks(samples: [HKQuantitySample]) -> [Double] {
+    func aggregateIntoWeeks(samples: [HKWorkout]) -> [Double] {
         
         // Get the first day of this week
         let calendar = NSCalendar.currentCalendar()
@@ -204,7 +286,9 @@ class HealthManager {
             }
             
             // Add to the sum
-            sum += sample.quantity.doubleValueForUnit(HKUnit.mileUnit())
+            if(sample.workoutActivityType == .Running) {
+                sum += sample.totalDistance?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0
+            }
         }
         
         // Add the final sample to the output array

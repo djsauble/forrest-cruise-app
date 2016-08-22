@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DA9404FA24783D2A9083B1AB /* Pods_ForrestCruiseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21EC2DE289ED0A92D7019DBE /* Pods_ForrestCruiseApp.framework */; };
 		F8574830E0A8A3EA6E8300C9 /* Pods_ForrestCruiseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4F24A4509A573B13773853 /* Pods_ForrestCruiseAppTests.framework */; };
-		FB028BAA1D6626D100917859 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB028BA91D6626D100917859 /* RunViewController.swift */; };
 		FB028BAC1D662FD900917859 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB028BAB1D662FD900917859 /* LocationManager.swift */; };
 		FB7158911D625E3B00CDFFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */; };
 		FB7158961D625E3B00CDFFF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7158941D625E3B00CDFFF1 /* Main.storyboard */; };
@@ -49,7 +48,6 @@
 		C314D22AD1010DC940137420 /* Pods-ForrestCruiseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseApp/Pods-ForrestCruiseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C3BABF4BCC6D5003E9268A82 /* Pods-ForrestCruiseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseApp/Pods-ForrestCruiseApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED0E5D3B1BAA898D162D2A0A /* Pods-ForrestCruiseAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForrestCruiseAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForrestCruiseAppTests/Pods-ForrestCruiseAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		FB028BA91D6626D100917859 /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		FB028BAB1D662FD900917859 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FB71588D1D625E3B00CDFFF1 /* ForrestCruiseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForrestCruiseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7158901D625E3B00CDFFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				FBA1C0731D63E8C300DF2F0F /* TodayViewController.swift */,
-				FB028BA91D6626D100917859 /* RunViewController.swift */,
 				FBA1C0751D64C75000DF2F0F /* GoalViewController.swift */,
 				FBAF4F011D667A01002CDF72 /* RunsViewController.swift */,
 				FB79F8061D67A7E40092E93A /* LoginViewController.swift */,
@@ -426,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA1C07A1D6517E600DF2F0F /* ActivityManager.swift in Sources */,
-				FB028BAA1D6626D100917859 /* RunViewController.swift in Sources */,
 				FBAF4EFC1D6671A2002CDF72 /* FileManager.swift in Sources */,
 				FB028BAC1D662FD900917859 /* LocationManager.swift in Sources */,
 				FBA68D481D63E11200F46B76 /* WeeklyGoalControl.swift in Sources */,

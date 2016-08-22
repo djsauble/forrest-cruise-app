@@ -12,26 +12,24 @@ import HealthKit
 
 class TodayViewController: UIViewController {
     
-    @IBOutlet weak var trendView: TrendControl!
-    @IBOutlet weak var weeklyGoalView: WeeklyGoalControl!
-    
     // MARK: Properties
     
-    var runInProgress: Bool = false
+    @IBOutlet weak var trendView: TrendControl!
+    @IBOutlet weak var weeklyGoalView: WeeklyGoalControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Refresh the values
         if let manager = HealthManager.singleton {
+            manager.workoutCallback = self.displayWorkouts
             manager.trendCallback = self.displayTrend
             manager.todayCallback = self.displayDay
         }
-        
-        // Check for activity events
-        if let manager = ActivityManager.singleton {
-            manager.callback = self.onActivityChange
-        }
+    }
+    
+    func displayWorkouts(weeks: [Double]?) {
+        print(weeks?.count ?? 0)
     }
     
     func displayTrend(weeks: [HKStatistics]?) {
@@ -54,20 +52,6 @@ class TodayViewController: UIViewController {
     func displayDay(day: HKStatistics?) {
         if let day = day {
             self.weeklyGoalView.today = day.sumQuantity()?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0
-        }
-    }
-    
-    func onActivityChange(data: CMMotionActivity) {
-        // Start recording GPS data
-        if data.confidence == .High && data.running && !self.runInProgress {
-        //if data.stationary && !self.runInProgress {
-            self.performSegueWithIdentifier("recordRun", sender: self)
-            self.runInProgress = true
-        }
-        // Stop recording GPS data
-        else if data.stationary && self.runInProgress {
-            self.dismissViewControllerAnimated(true, completion: nil)
-            self.runInProgress = false
         }
     }
 }
