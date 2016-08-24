@@ -49,7 +49,7 @@ class ActivityManager {
             if data.confidence == .High && data.running && !self.runInProgress {
                 self.startRun()
             }
-                // Stop recording GPS data
+            // Stop recording GPS data
             else if data.stationary && self.runInProgress {
                 self.stopRun()
             }

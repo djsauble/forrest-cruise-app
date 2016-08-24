@@ -37,6 +37,9 @@ class HealthManager {
             
             // Subscribe to trend updates
             self.subscribeTrend()
+            
+            // Subscribe to workout updates
+            self.subscribeWorkouts()
         })
     }
     
@@ -95,7 +98,7 @@ class HealthManager {
         let calendar = NSCalendar.currentCalendar()
         
         // Set the anchor week to Sunday at 12:00 a.m.
-        let anchorComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        let anchorComponents = calendar.components([.Day, .Month, .Year, .Weekday], fromDate: NSDate())
         
         let offset = (7 + anchorComponents.weekday - 1) % 7
         anchorComponents.day -= offset
@@ -221,7 +224,7 @@ class HealthManager {
         let calendar = NSCalendar.currentCalendar()
         
         // Set the anchor week to Sunday at 12:00 a.m.
-        let anchorComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        let anchorComponents = calendar.components([.Day, .Month, .Year, .Weekday], fromDate: NSDate())
         
         let offset = (7 + anchorComponents.weekday - 1) % 7
         anchorComponents.day -= offset

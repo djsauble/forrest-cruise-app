@@ -29,7 +29,9 @@ class TodayViewController: UIViewController {
     }
     
     func displayWorkouts(weeks: [Double]?) {
-        print(weeks?.count ?? 0)
+        if let data = weeks {
+            self.trendView.workoutTrend = data
+        }
     }
     
     func displayTrend(weeks: [HKStatistics]?) {
