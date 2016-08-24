@@ -56,7 +56,7 @@ class TrendControl: UIView {
         }
         
         let spacing = 1
-        let barWidth = CGFloat((Int(frame.size.width) / self.trend.count) - spacing)
+        let barWidth = (frame.size.width / CGFloat(self.trend.count)) - CGFloat(spacing)
         
         // Find the max bar height
         if let max = self.trend.maxElement() {
