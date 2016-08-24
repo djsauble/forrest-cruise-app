@@ -106,13 +106,12 @@ class ActivityManager {
     }
     
     func addPointsToRoute(locations: [CLLocation]) {
-print("Callback!")
+
         // Make sure a run is in progress
         guard self.runInProgress else {
             return
         }
-        
-        print("Points added to route")
+
         // Add points to the array
         route.appendContentsOf(locations)
 
