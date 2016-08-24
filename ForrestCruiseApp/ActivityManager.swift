@@ -32,7 +32,6 @@ class ActivityManager {
         
         // Start polling for location
         locationManager = LocationManager()
-        locationManager.startCapture()
         
         // Start checking for activity
         activityManager = CMMotionActivityManager()
@@ -50,7 +49,8 @@ class ActivityManager {
                 self.startRun()
             }
             // Stop recording GPS data
-            else if data.stationary && self.runInProgress {
+            //else if data.stationary && self.runInProgress {
+            else if data.confidence == .High && !data.running && self.runInProgress {
                 self.stopRun()
             }
         }
@@ -60,6 +60,7 @@ class ActivityManager {
         
         print("Starting a run")
         self.runInProgress = true
+        locationManager.startCapture()
         
         // Prep for a new route
         route = []
@@ -70,12 +71,13 @@ class ActivityManager {
         
         print("Stopping a run")
         self.runInProgress = false
+        locationManager.stopCapture()
         
         // Create the workout
         let run = HKWorkout(
             activityType: .Running,
             startDate: self.startDate!,
-            endDate: self.endDate!,
+            endDate: self.endDate ?? NSDate(),
             duration: (self.endDate?.timeIntervalSinceDate(self.startDate!))!,
             totalEnergyBurned: nil,
             totalDistance: self.distance,
@@ -104,15 +106,16 @@ class ActivityManager {
     }
     
     func addPointsToRoute(locations: [CLLocation]) {
-        
+print("Callback!")
         // Make sure a run is in progress
         guard self.runInProgress else {
             return
         }
-
+        
+        print("Points added to route")
         // Add points to the array
         route.appendContentsOf(locations)
-        
+
         // Recalculate distance
         
         // Fix the end of the interval to search

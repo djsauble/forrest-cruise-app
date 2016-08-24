@@ -20,9 +20,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         // Set up the location manager
         self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.distanceFilter = kCLLocationAccuracyBest
         self.locationManager.allowsBackgroundLocationUpdates = true
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
         self.locationManager.activityType = CLActivityType.Fitness
         //self.locationManager.pausesLocationUpdatesAutomatically = false
         
@@ -30,16 +30,21 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways {
             self.locationManager.requestAlwaysAuthorization()
         }
+        else {
+            self.locationManager.startUpdatingLocation()
+        }
     }
     
     // Start capturing data
     func startCapture() {
-        self.locationManager.startUpdatingLocation()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = kCLLocationAccuracyBest
     }
     
     // Stop capturing data
     func stopCapture() {
-        self.locationManager.stopUpdatingLocation()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
     }
     
     // MARK: CLLocationManagerDelegate
@@ -48,6 +53,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     @objc func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status != CLAuthorizationStatus.AuthorizedAlways {
             //fatalError("Did not receive permission to capture location")
+        }
+        else {
+            self.locationManager.startUpdatingLocation()
         }
     }
     
