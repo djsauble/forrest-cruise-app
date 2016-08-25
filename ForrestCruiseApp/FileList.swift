@@ -57,17 +57,6 @@ class FileList {
         ws.open(RemoteAPI.ws)
     }
     
-    func getFiles() -> [String] {
-        var files = [String]()
-        files.appendContentsOf(self.uploaded)
-        
-        if let pending = self.pending {
-            files.appendContentsOf(pending)
-        }
-        
-        return files.reverse()
-    }
-    
     func loadFileList() {
         self.pending = NSKeyedUnarchiver.unarchiveObjectWithFile(FileList.ArchiveURL.path!) as? [String]
         if self.pending == nil {
@@ -93,6 +82,24 @@ class FileList {
     }
     
     // MARK: Public API
+    
+    func getPendingFiles() -> [String] {
+        if let pending = self.pending {
+            return pending.reverse()
+        }
+        return []
+    }
+    
+    func getFiles() -> [String] {
+        var files = [String]()
+        files.appendContentsOf(self.uploaded)
+        
+        if let pending = self.pending {
+            files.appendContentsOf(pending)
+        }
+        
+        return files.reverse()
+    }
     
     func getNextUpload() -> String? {
         if let files = self.pending {
