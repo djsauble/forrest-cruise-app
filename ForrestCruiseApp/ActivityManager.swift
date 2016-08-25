@@ -78,7 +78,7 @@ class ActivityManager {
             activityType: .Running,
             startDate: self.startDate!,
             endDate: self.endDate ?? NSDate(),
-            duration: (self.endDate?.timeIntervalSinceDate(self.startDate!))!,
+            duration: self.endDate?.timeIntervalSinceDate(self.startDate!) ?? NSTimeInterval(0),
             totalEnergyBurned: nil,
             totalDistance: self.distance,
             device: HKDevice.localDevice(),

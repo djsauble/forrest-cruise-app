@@ -11,7 +11,8 @@ import UIKit
 class RunsTableViewCell: UITableViewCell {
     
     // MARK: Properties
-    @IBOutlet weak var fileName: UILabel!
+    @IBOutlet weak var runDayLabel: UILabel!
+    @IBOutlet weak var runDataLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

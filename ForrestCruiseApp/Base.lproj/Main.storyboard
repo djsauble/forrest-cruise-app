@@ -199,21 +199,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvC-qQ-Ont">
-                                            <rect key="frame" x="8" y="23" width="584" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvC-qQ-Ont" userLabel="Day">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgZ-9r-CzV" userLabel="Data">
+                                            <rect key="frame" x="8" y="38" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="mvC-qQ-Ont" firstAttribute="leading" secondItem="k5N-b9-1f6" secondAttribute="leadingMargin" id="hm3-IH-N5K"/>
-                                        <constraint firstItem="mvC-qQ-Ont" firstAttribute="centerY" secondItem="k5N-b9-1f6" secondAttribute="centerY" id="nRX-NF-aeL"/>
-                                        <constraint firstItem="mvC-qQ-Ont" firstAttribute="trailing" secondItem="k5N-b9-1f6" secondAttribute="trailingMargin" id="tdi-Rv-M0V"/>
+                                        <constraint firstItem="dgZ-9r-CzV" firstAttribute="leading" secondItem="k5N-b9-1f6" secondAttribute="leadingMargin" id="0hk-Ju-Y1h"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dgZ-9r-CzV" secondAttribute="bottom" id="96C-ny-zl2"/>
+                                        <constraint firstItem="mvC-qQ-Ont" firstAttribute="top" secondItem="k5N-b9-1f6" secondAttribute="topMargin" id="9OQ-Rw-zOR"/>
+                                        <constraint firstItem="dgZ-9r-CzV" firstAttribute="trailing" secondItem="k5N-b9-1f6" secondAttribute="trailingMargin" id="kL7-Em-dLw"/>
+                                        <constraint firstItem="mvC-qQ-Ont" firstAttribute="leading" secondItem="k5N-b9-1f6" secondAttribute="leadingMargin" id="m12-8e-g9X"/>
+                                        <constraint firstItem="mvC-qQ-Ont" firstAttribute="trailing" secondItem="k5N-b9-1f6" secondAttribute="trailingMargin" id="sg8-Ya-Wll"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="fileName" destination="mvC-qQ-Ont" id="hfg-1l-6AN"/>
+                                    <outlet property="runDayLabel" destination="mvC-qQ-Ont" id="hfg-1l-6AN"/>
+                                    <outlet property="runDataLabel" destination="dgZ-9r-CzV" id="EfF-go-d0o"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -18,12 +18,14 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
     var savedCompletionHandler: (() -> Void)?
     var responsesData: [Int:NSMutableData] = [:]
     var responseData: NSMutableData? = nil
-    var pending = FileList()
-    var remote = RemoteAPI()
+    var remote: RemoteAPI
+    var pending: FileList
     
     override init() {
         self.session = nil
         self.savedCompletionHandler = nil
+        self.remote = RemoteAPI()
+        self.pending = FileList(remote: remote)
         
         super.init()
         
@@ -78,19 +80,16 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
         // Any uploads in progress?
         if self.task == nil || self.task!.state == NSURLSessionTaskState.Completed {
             // Any runs in the queue?
-            if let files = self.pending.files {
-                if files.count > 0 {
-                    self.upload(self.pending.files!.first!)
-                }
+            if let file = self.pending.getNextUpload() {
+                self.upload(file)
             }
         }
     }
     
     // Queue a file for upload
     func queue(file: String) {
-        if self.pending.files != nil {
-            self.pending.files!.append(file)
-            self.pending.saveFileList()
+        if self.pending.pending != nil {
+            self.pending.addUpload(file)
             self.kick()
         }
     }
@@ -127,10 +126,7 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
             try NSFileManager.defaultManager().removeItemAtPath(path)
             
             // Delete the entry from the file list
-            if let index = self.pending.files?.indexOf(file) {
-                self.pending.files?.removeAtIndex(index)
-                self.pending.saveFileList()
-            }
+            self.pending.removeFile(file)
         } catch _ {
             print("Was unable to delete the old file")
         }
@@ -157,15 +153,13 @@ class FileManager: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
         if let r = self.responseData {
             if let str = NSString(data: r, encoding: NSUTF8StringEncoding) {
                 if str.length == 0 {
-                    if self.pending.files != nil {
-                        // Delete the file that has been uploaded successfully
-                        self.deleteFile(self.pending.files!.first!)
+                    // Delete the file that has been uploaded successfully
+                    self.deleteFile(self.pending.getNextUpload()!)
                         
-                        // See if there are more files to upload
-                        if self.pending.files!.count > 0 {
-                            print("Starting the next upload...")
-                            self.upload(self.pending.files!.first!)
-                        }
+                    // See if there are more files to upload
+                    if let file = self.pending.getNextUpload() {
+                        print("Starting the next upload...")
+                        self.upload(file)
                     }
                 }
                 else {
