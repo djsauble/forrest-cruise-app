@@ -41,7 +41,13 @@
                             <constraint firstItem="6zV-0O-YVT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wRs-f2-zPf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Weekly Goal" id="G24-GM-FnH"/>
+                    <navigationItem key="navigationItem" title="Weekly Goal" id="G24-GM-FnH">
+                        <barButtonItem key="rightBarButtonItem" title="Go run" id="Bhz-2k-tVU">
+                            <connections>
+                                <segue destination="qju-8t-gis" kind="show" id="c4w-ir-Pb0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="trendView" destination="6zV-0O-YVT" id="r2H-wY-T2r"/>
                         <outlet property="weeklyGoalView" destination="kP9-YF-B0a" id="Ka4-7v-2ht"/>
@@ -49,7 +55,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144" y="1703"/>
+            <point key="canvasLocation" x="1364" y="1703"/>
+        </scene>
+        <!--Run View Controller-->
+        <scene sceneID="uSa-Vl-Fee">
+            <objects>
+                <viewController id="qju-8t-gis" customClass="RunViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gqp-3U-SKk"/>
+                        <viewControllerLayoutGuide type="bottom" id="MlX-Sa-Qbl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jfi-oG-UBz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bAa-8Z-CHV">
+                                <rect key="frame" x="219" y="261" width="162" height="78"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1z-RF-H0Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="162" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfa-99-Uue">
+                                        <rect key="frame" x="54" y="48" width="53" height="30"/>
+                                        <state key="normal" title="End run"/>
+                                        <connections>
+                                            <action selector="endRun:" destination="qju-8t-gis" eventType="touchUpInside" id="HLr-c7-A8Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bAa-8Z-CHV" firstAttribute="centerY" secondItem="jfi-oG-UBz" secondAttribute="centerY" id="FgO-nI-8E3"/>
+                            <constraint firstItem="bAa-8Z-CHV" firstAttribute="centerX" secondItem="jfi-oG-UBz" secondAttribute="centerX" id="Uk8-xy-U3a"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="distanceLabel" destination="d1z-RF-H0Q" id="Mtb-aP-Z83"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ms8-vg-XTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1364" y="2468"/>
         </scene>
         <!--Long-Term Goal-->
         <scene sceneID="JxJ-oG-X5h">
@@ -69,7 +122,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What race are you training for?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUx-zy-69i">
                                         <rect key="frame" x="163" y="0.0" width="236" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rg-fe-we3">
@@ -78,7 +131,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What is your target pace?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-Rc-Ege">
                                         <rect key="frame" x="182" y="237" width="196" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-HX-P9W">
@@ -120,7 +173,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your access token" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAd-ci-IGV">
                                 <rect key="frame" x="20" y="82" width="184" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wll-dU-llQ">
@@ -143,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pak-gx-ozL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="2468"/>
+            <point key="canvasLocation" x="-74" y="2468"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="esc-ZX-Wof">
@@ -155,9 +208,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="wzW-Q3-gvP" kind="relationship" relationship="viewControllers" id="AOy-Hz-cYo"/>
-                        <segue destination="KM5-Im-0jh" kind="relationship" relationship="viewControllers" id="OcD-iA-Ggs"/>
-                        <segue destination="Ybh-X5-IzH" kind="relationship" relationship="viewControllers" id="EQk-jh-Xo1"/>
+                        <segue destination="Ybh-X5-IzH" kind="relationship" relationship="viewControllers" id="Zqj-Cu-SJr"/>
+                        <segue destination="KM5-Im-0jh" kind="relationship" relationship="viewControllers" id="7pD-ZW-WNl"/>
+                        <segue destination="wzW-Q3-gvP" kind="relationship" relationship="viewControllers" id="8si-B6-89W"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z63-Gu-WNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,7 +234,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJf-yi-z3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144" y="967"/>
+            <point key="canvasLocation" x="1364" y="967"/>
         </scene>
         <!--Runs-->
         <scene sceneID="3AA-eE-dMF">
@@ -202,13 +255,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvC-qQ-Ont" userLabel="Day">
                                             <rect key="frame" x="8" y="8" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgZ-9r-CzV" userLabel="Data">
                                             <rect key="frame" x="8" y="38" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -222,8 +275,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="runDayLabel" destination="mvC-qQ-Ont" id="hfg-1l-6AN"/>
                                     <outlet property="runDataLabel" destination="dgZ-9r-CzV" id="EfF-go-d0o"/>
+                                    <outlet property="runDayLabel" destination="mvC-qQ-Ont" id="hfg-1l-6AN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -244,7 +297,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-54-qWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="1703"/>
+            <point key="canvasLocation" x="-74" y="1703"/>
         </scene>
         <!--Runs-->
         <scene sceneID="Y1y-Nm-tyd">
@@ -263,7 +316,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQx-mC-UW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="967"/>
+            <point key="canvasLocation" x="-74" y="967"/>
         </scene>
         <!--Goal-->
         <scene sceneID="zx9-LG-v8P">

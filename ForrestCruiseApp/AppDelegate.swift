@@ -12,11 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var activityManager: ActivityManager?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Start polling for activity
-        activityManager = ActivityManager()
         return true
     }
 
@@ -40,11 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Before quitting, check to see if a run is in progress and save it if so
-        if let manager = activityManager {
-            if manager.runInProgress {
-                manager.stopRun()
-            }
-        }
     }
 
 }

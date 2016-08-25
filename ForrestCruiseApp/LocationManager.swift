@@ -30,21 +30,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways {
             self.locationManager.requestAlwaysAuthorization()
         }
-        else {
-            self.locationManager.startUpdatingLocation()
-        }
     }
     
     // Start capturing data
     func startCapture() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
     }
     
     // Stop capturing data
     func stopCapture() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        self.locationManager.stopUpdatingLocation()
     }
     
     // MARK: CLLocationManagerDelegate
@@ -53,9 +52,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     @objc func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status != CLAuthorizationStatus.AuthorizedAlways {
             //fatalError("Did not receive permission to capture location")
-        }
-        else {
-            self.locationManager.startUpdatingLocation()
         }
     }
     

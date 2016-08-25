@@ -1,59 +1,55 @@
 //
-//  ActivityManager.swift
+//  RunViewController.swift
 //  ForrestCruiseApp
 //
-//  Created by Daniel Sauble on 8/17/16.
+//  Created by Daniel Sauble on 8/25/16.
 //  Copyright © 2016 Daniel Sauble. All rights reserved.
 //
 
-import HealthKit
-import CoreMotion
+import UIKit
 import CoreLocation
+import HealthKit
 
-class ActivityManager {
+class RunViewController: UIViewController {
     
     // MARK: Properties
     
-    // Detect activity
-    var locationManager: LocationManager
-    var activityManager: CMMotionActivityManager
-    var runInProgress: Bool = false
+    @IBOutlet weak var distanceLabel: UILabel!
     
-    // Metadata about the current run
+    var locationManager = LocationManager()
     var route: [CLLocation] = []
     var startDate: NSDate?
     var endDate: NSDate?
     var distance: HKQuantity?
+    var runInProgress: Bool = false
     
-    init?() {
-        guard CMMotionActivityManager.isActivityAvailable() else {
-            return nil
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // Start polling for location
-        locationManager = LocationManager()
-        
-        // Start checking for activity
-        activityManager = CMMotionActivityManager()
-        
-        // Set up callbacks
         locationManager.callback = self.addPointsToRoute
-        activityManager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: self.handleActivityUpdates)
+        
+        // Start the run
+        if !self.runInProgress {
+            resetRun()
+            startRun()
+        }
     }
     
-    func handleActivityUpdates(data: CMMotionActivity?) {
-        if let data = data {
-            // Start recording GPS data
-            //if data.stationary && !self.runInProgress {
-            if data.confidence == .High && data.running && !self.runInProgress {
-                self.startRun()
-            }
-            // Stop recording GPS data
-            //else if data.stationary && self.runInProgress {
-            else if data.confidence == .High && !data.running && self.runInProgress {
-                self.stopRun()
-            }
-        }
+    @IBAction func endRun(sender: AnyObject) {
+        stopRun()
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func resetRun() {
+        
+        print("Resetting a run")
+        runInProgress = false
+        startDate = nil
+        endDate = nil
+        distance = nil
+        route = []
+        locationManager.stopCapture()
     }
     
     func startRun() {
@@ -106,15 +102,15 @@ class ActivityManager {
     }
     
     func addPointsToRoute(locations: [CLLocation]) {
-
+        
         // Make sure a run is in progress
         guard self.runInProgress else {
             return
         }
-
+        
         // Add points to the array
         route.appendContentsOf(locations)
-
+        
         // Recalculate distance
         
         // Fix the end of the interval to search
@@ -136,10 +132,14 @@ class ActivityManager {
         // Query the store
         let query = HKStatisticsQuery(quantityType: sampleType, quantitySamplePredicate: predicate, options: .CumulativeSum) {
             query, result, error in
-
+            
             // Add distance traversed since the last check-in
             if let result = result {
                 self.distance = result.sumQuantity()
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.distanceLabel.text = "\(round(self.distance?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0 * 10.0) / 10.0) miles"
+                }
             }
         }
         
