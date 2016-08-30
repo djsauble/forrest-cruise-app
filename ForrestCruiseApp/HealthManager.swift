@@ -269,7 +269,7 @@ class HealthManager {
         let components = calendar.components([.Year, .Month, .Day], fromDate: now)
         let today = calendar.dateFromComponents(components)
         let day0 = calendar.dateByAddingUnit(.Day, value: -(calendar.component(.Weekday, fromDate: today!) - 1), toDate: today!, options: [])
-        
+
         // Loop variables
         var current = day0
         var sum = 0.0
@@ -296,7 +296,7 @@ class HealthManager {
         
         // Add the final sample to the output array
         output.append(sum)
-        
-        return output
+
+        return output.reverse()
     }
 }
