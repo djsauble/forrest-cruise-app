@@ -138,7 +138,7 @@ class RunViewController: UIViewController {
                 self.distance = result.sumQuantity()
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.distanceLabel.text = "\(round(self.distance?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0 * 10.0) / 10.0) miles"
+                    self.distanceLabel.text = "\((round((self.distance?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0) * 10.0) ?? 0.0) / 10.0) miles"
                 }
             }
         }
