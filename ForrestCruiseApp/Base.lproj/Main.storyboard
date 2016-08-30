@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O0Y-EE-b2f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wzW-Q3-gvP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-YF-B0a" customClass="WeeklyGoalControl" customModule="ForrestCruiseApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-YF-B0a" customClass="WeeklyGoalControl" customModule="ForrestCruiseApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="72" width="560" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zV-0O-YVT" customClass="TrendControl" customModule="ForrestCruiseApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zV-0O-YVT" customClass="TrendControl" customModule="ForrestCruiseApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="452" width="560" height="91"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -42,6 +42,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weekly Goal" id="G24-GM-FnH">
+                        <barButtonItem key="leftBarButtonItem" title="View runs" id="M1m-yq-PqO">
+                            <connections>
+                                <segue destination="UvB-T8-LtY" kind="show" id="3qr-mC-TiW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Go run" id="Bhz-2k-tVU">
                             <connections>
                                 <segue destination="qju-8t-gis" kind="show" id="c4w-ir-Pb0"/>
@@ -102,61 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ms8-vg-XTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1364" y="2468"/>
-        </scene>
-        <!--Long-Term Goal-->
-        <scene sceneID="JxJ-oG-X5h">
-            <objects>
-                <viewController id="OfZ-al-WsY" customClass="GoalViewController" customModule="ForrestCruiseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RpW-dJ-TLa"/>
-                        <viewControllerLayoutGuide type="bottom" id="kjz-bv-CCD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bCf-2z-zZ1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="IKU-Zn-dxD">
-                                <rect key="frame" x="20" y="74" width="560" height="466"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What race are you training for?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUx-zy-69i">
-                                        <rect key="frame" x="163" y="0.0" width="236" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rg-fe-we3">
-                                        <rect key="frame" x="120" y="26" width="320" height="205"/>
-                                    </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What is your target pace?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-Rc-Ege">
-                                        <rect key="frame" x="182" y="237" width="196" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-HX-P9W">
-                                        <rect key="frame" x="120" y="262" width="320" height="204"/>
-                                    </pickerView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="IKU-Zn-dxD" firstAttribute="top" secondItem="RpW-dJ-TLa" secondAttribute="bottom" constant="10" id="BvC-bf-598"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="IKU-Zn-dxD" secondAttribute="bottom" constant="60" id="HsJ-ni-rHi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IKU-Zn-dxD" secondAttribute="trailing" id="Ht6-sF-aio"/>
-                            <constraint firstItem="IKU-Zn-dxD" firstAttribute="leading" secondItem="bCf-2z-zZ1" secondAttribute="leadingMargin" id="kp4-xg-DD0"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Long-Term Goal" id="X2r-Hc-GH1"/>
-                    <connections>
-                        <outlet property="goalDistancePicker" destination="1rg-fe-we3" id="1Ds-JH-3bX"/>
-                        <outlet property="goalPacePicker" destination="5lr-HX-P9W" id="qJV-Ao-nhf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oXk-IF-Yj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="644" y="1703"/>
+            <point key="canvasLocation" x="902" y="2486"/>
         </scene>
         <!--Login-->
         <scene sceneID="TVA-cN-QGY">
@@ -196,26 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pak-gx-ozL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="2468"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="esc-ZX-Wof">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="O0Y-EE-b2f" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="bW2-oq-X3m">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Ybh-X5-IzH" kind="relationship" relationship="viewControllers" id="Zqj-Cu-SJr"/>
-                        <segue destination="KM5-Im-0jh" kind="relationship" relationship="viewControllers" id="7pD-ZW-WNl"/>
-                        <segue destination="wzW-Q3-gvP" kind="relationship" relationship="viewControllers" id="8si-B6-89W"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z63-Gu-WNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="644" y="191"/>
+            <point key="canvasLocation" x="1814" y="3251"/>
         </scene>
         <!--Today-->
         <scene sceneID="g8Z-Lc-fvD">
@@ -297,45 +229,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-54-qWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="1703"/>
-        </scene>
-        <!--Runs-->
-        <scene sceneID="Y1y-Nm-tyd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ybh-X5-IzH" userLabel="Runs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Runs" id="Jd9-g6-OEy"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oo3-ka-dQ1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UvB-T8-LtY" kind="relationship" relationship="rootViewController" id="Lq7-xV-d6s"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PQx-mC-UW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-74" y="967"/>
-        </scene>
-        <!--Goal-->
-        <scene sceneID="zx9-LG-v8P">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KM5-Im-0jh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Goal" id="MJe-NA-Zhr"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kTh-Rb-XIE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="OfZ-al-WsY" kind="relationship" relationship="rootViewController" id="J4M-9F-gWy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T0o-cF-2SG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="644" y="967"/>
+            <point key="canvasLocation" x="1814" y="2486"/>
         </scene>
     </scenes>
 </document>

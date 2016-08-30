@@ -15,9 +15,6 @@ class RunsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Use the edit button item provided by the table view controller
-        navigationItem.leftBarButtonItem = editButtonItem()
         
         // Listen for updates to the backing data store
         FileManager.singleton.pending.callback = self.updateTable
@@ -52,24 +49,5 @@ class RunsViewController: UITableViewController {
         cell.runDayLabel.text = file
         
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        if indexPath.row < FileManager.singleton.pending.getPendingFiles().count {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            FileManager.singleton.deleteFile(self.files[indexPath.row])
-            self.files = FileManager.singleton.pending.getFiles()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        }
     }
 }

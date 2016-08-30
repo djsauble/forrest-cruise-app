@@ -17,6 +17,17 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var trendView: TrendControl!
     @IBOutlet weak var weeklyGoalView: WeeklyGoalControl!
     
+    let goalDistances = [
+        [ "mpw": 10, "race": "5k" ],
+        [ "mpw": 20, "race": "10k" ],
+        [ "mpw": 30, "race": "Half marathon" ],
+        [ "mpw": 40, "race": "Marathon" ],
+        [ "mpw": 50, "race": "50k ultra" ],
+        [ "mpw": 60, "race": "50 mile ultra" ],
+        [ "mpw": 70, "race": "100k ultra" ],
+        [ "mpw": 80, "race": "100 mile ultra" ]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
