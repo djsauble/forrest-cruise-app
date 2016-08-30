@@ -40,6 +40,9 @@ class HealthManager {
             
             // Subscribe to workout updates
             self.subscribeWorkouts()
+            
+            // Subscribe to today updates
+            self.subscribeDay()
         })
     }
     
