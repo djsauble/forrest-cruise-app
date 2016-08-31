@@ -91,9 +91,10 @@ class WeeklyGoalControl: UIView {
         weeklyGoalLabel.frame = CGRect(x: barWidth + textSpacing, y: 0, width: frame.size.width - barWidth - textSpacing, height: textHeight)
 
         thisDayLabel.text = "\(round(thisDay * 10) / 10) miles left today"
-        thisDayLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - thisWeekHeight - thisDayHeight, width: frame.size.width - barWidth - textSpacing, height: textHeight)
+        let y = thisWeekHeight > textHeight ? frame.size.height - thisWeekHeight - thisDayHeight : frame.size.height - thisWeekHeight
+        thisDayLabel.frame = CGRect(x: barWidth + textSpacing, y: y, width: frame.size.width - barWidth - textSpacing, height: textHeight)
 
         thisWeekLabel.text = "\(round(self.thisWeek * 10) / 10) miles so far"
-        thisWeekLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - thisWeekHeight, width: frame.size.width - barWidth - textSpacing, height: textHeight)
+        thisWeekLabel.frame = CGRect(x: barWidth + textSpacing, y: frame.size.height - textHeight, width: frame.size.width - barWidth - textSpacing, height: textHeight)
     }
 }
