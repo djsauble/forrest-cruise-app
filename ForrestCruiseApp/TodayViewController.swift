@@ -14,6 +14,7 @@ class TodayViewController: UIViewController {
     
     // MARK: Properties
     
+    @IBOutlet weak var paceView: PaceControl!
     @IBOutlet weak var trendView: TrendControl!
     @IBOutlet weak var weeklyGoalView: WeeklyGoalControl!
     
@@ -39,9 +40,16 @@ class TodayViewController: UIViewController {
         }
     }
     
-    func displayWorkouts(weeks: [Double]?) {
+    func displayWorkouts(weeks: [WorkoutSum]?) {
         if let data = weeks {
-            self.trendView.workoutTrend = data
+            self.trendView.workoutTrend = data.map({
+                p in
+                return p.distance
+            })
+            self.paceView.trend = data.map({
+                p in
+                return p.pace
+            })
         }
     }
     

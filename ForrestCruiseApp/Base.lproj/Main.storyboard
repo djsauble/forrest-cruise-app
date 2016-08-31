@@ -22,11 +22,15 @@
                                 <rect key="frame" x="20" y="72" width="560" height="520"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-YF-B0a" customClass="WeeklyGoalControl" customModule="ForrestCruiseApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="168"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zV-0O-YVT" customClass="TrendControl" customModule="ForrestCruiseApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="264" width="560" height="256"/>
+                                        <rect key="frame" x="0.0" y="176" width="560" height="168"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pC-HH-xvo" customClass="PaceControl" customModule="ForrestCruiseApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="352" width="560" height="168"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -53,6 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="paceView" destination="3pC-HH-xvo" id="dp5-8U-xuH"/>
                         <outlet property="trendView" destination="6zV-0O-YVT" id="r2H-wY-T2r"/>
                         <outlet property="weeklyGoalView" destination="kP9-YF-B0a" id="Ka4-7v-2ht"/>
                     </connections>

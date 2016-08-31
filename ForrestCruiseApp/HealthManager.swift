@@ -15,7 +15,7 @@ class HealthManager {
     var healthStore: HKHealthStore
     var trendCallback: ((weeks: [HKStatistics]?) -> Void)?
     var todayCallback: ((day: HKStatistics?) -> Void)?
-    var workoutCallback: ((weeks: [Double]?) -> Void)?
+    var workoutCallback: ((weeks: [WorkoutSum]?) -> Void)?
     
     init?() {
         // App requires HealthKit
@@ -222,7 +222,7 @@ class HealthManager {
     }
     
     // Get the workout distances over the past year
-    func getWorkoutDistances(callback: (weeks: [Double]?) -> Void) {
+    func getWorkoutDistances(callback: (weeks: [WorkoutSum]?) -> Void) {
         
         let calendar = NSCalendar.currentCalendar()
         
@@ -264,7 +264,7 @@ class HealthManager {
     }
     
     // Aggregate sample data by weeks
-    func aggregateIntoWeeks(samples: [HKWorkout]) -> [Double] {
+    func aggregateIntoWeeks(samples: [HKWorkout]) -> [WorkoutSum] {
         
         // Get the first day of this week
         let calendar = NSCalendar.currentCalendar()
@@ -275,30 +275,36 @@ class HealthManager {
 
         // Loop variables
         var current = day0
-        var sum = 0.0
+        var distanceSum = 0.0
+        var durationSum = 0.0
+        var averagePace = 0.0
         
         // Reverse the sample array so we process newest values first
         let input = samples.reverse()
-        var output = [Double]()
+        var output = [WorkoutSum]()
         
         for sample in input {
             
             // If the next sample is older than the current week, append the current sum to the output array
             if current!.compare(sample.startDate) == .OrderedDescending {
-                output.append(sum)
-                sum = 0
+                averagePace = distanceSum > 0 ? durationSum / distanceSum : 0.0
+                output.append(WorkoutSum(distance: distanceSum, pace: averagePace))
+                distanceSum = 0.0
+                durationSum = 0.0
                 current = calendar.dateByAddingUnit(.Day, value: -7, toDate: current!, options: [])
                 continue
             }
             
             // Add to the sum
             if(sample.workoutActivityType == .Running) {
-                sum += sample.totalDistance?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0
+                distanceSum += sample.totalDistance?.doubleValueForUnit(HKUnit.mileUnit()) ?? 0.0
+                durationSum += sample.duration / 60.0
             }
         }
         
         // Add the final sample to the output array
-        output.append(sum)
+        averagePace = distanceSum > 0 ? durationSum / distanceSum : 0.0
+        output.append(WorkoutSum(distance: distanceSum, pace: averagePace))
 
         return output.reverse()
     }
